@@ -1,0 +1,24 @@
+<% content_for :title, "Log In" %>
+<% content_for :font, "https://fonts.googleapis.com/css?family=Montserrat:200" %>
+<% content_for :stylesheet, "login.css" %>
+<% content_for :login, "1" %>
+<ul class="notice errors">
+<li>Whoops! That doesn't look quite right.</li>
+</ul>
+<%= image_tag "logo-text-white.png", :height => '55', :class => 'logo' %> <!-- 180^2 for signup -->
+
+<%= form_for(:session, url: login_path, :html => {:class => 'vertical-form'}) do |f| %>
+<legend>
+Log In
+</legend>
+<%= f.email_field :email, :placeholder => "Email" %>
+<%= f.password_field :password, :placeholder => "Password" %>
+   <%= f.submit "Log in" %>
+   <p><a href="<%= reset_path %>">Forgot password?</a></p>
+<% end %>
+<div class='footer'>
+<p>
+Don't have an account?
+<a href="/signup">Sign Up</a>
+</p>
+</div>
