@@ -30,4 +30,6 @@ scope '/signup' do
 end
 get '/posts/:id' => 'posts#details'
 get '/posts/:id/:slug' => 'posts#details', as: :post
+get '/category/:id' => 'posts#categories', as: :category
+get '/search' => 'posts#search', as: :search
 end

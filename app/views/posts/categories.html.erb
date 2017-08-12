@@ -88,33 +88,7 @@ $(window).load(function() {
 
     <!-- Main -->
       <div id="main">
-
-        <!-- Post -->
-          <article class="post">
-            <header>
-              <div class="title">
-                <h2><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>"><%= Post.limit(1).pluck(:post_title).first %></a></h2>
-                <p><%= Post.limit(1).pluck(:post_subtitle).first %></p>
-              </div>
-              <div class="meta">
-                <time class="published" datetime="<%= Post.limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
-                <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
-              </div>
-            </header>
-            <a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
-            <p><%= Post.limit(1).pluck(:post_body).first %></p>
-            <footer>
-              <ul class="actions">
-                <li><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>" class="button big">Continue Reading</a></li>
-              </ul>
-              <ul class="stats">
-                <li><a href="#"><%= Post.limit(1).pluck(:post_category).first %></a></li>
-                <!--<li><a href="#" class="icon fa-heart">28</a></li>
-                <li><a href="#" class="icon fa-comment">128</a></li>-->
-              </ul>
-            </footer>
-          </article>
-          <% Post.all.offset(1).limit(2).each do |post| %>
+          <% Post.order('id ASC').where("post_category = ?", params[:id]).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>
@@ -140,46 +114,7 @@ $(window).load(function() {
               </footer>
             </article>
             <% end %>
-
-            					</div>
-
-            				<!-- Sidebar -->
-            					<section id="sidebar">
-
-            						<!-- Intro -->
-            							<section id="intro">
-            								<a href="<%= root_path %>" class="logo"><img src="images/logo.jpg" alt="" /></a>
-            								<header>
-            									<h2><%= Setting.limit(1).pluck(:blog_name).first %></h2>
-            									<p><%= Setting.limit(1).pluck(:blog_tagline).first %></p>
-            								</header>
-            							</section>
-
-            						<!-- Mini Posts -->
-            							<section>
-            								<div class="mini-posts">
-                              <% Post.all.offset(3).limit(3).each do |post| %>
-            									<!-- Mini Post -->
-            										<article class="mini-post">
-            											<header>
-            												<h3><a href="<%= post_path(post.id, post.slug) %>"><%= post.post_title %></a></h3>
-            												<time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-            												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
-            											</header>
-            											<a href="#" class="image"><img src="images/pic10.jpg" alt="" /></a>
-            										</article>
-                                <% end %>
-            								</div>
-            							</section>
-
-            						<!-- About -->
-            							<section class="blurb">
-            								<h2>About</h2>
-            								<p><%= Setting.limit(1).pluck(:blog_about).first %></p>
-            								<ul class="actions">
-            									<!--<li><a href="#" class="button">Learn More</a></li>-->
-            								</ul>
-            							</section>
+          </section>
 
             						<!-- Footer -->
             							<section id="footer">
@@ -196,10 +131,10 @@ $(window).load(function() {
             			</div>
 
             		<!-- Scripts -->
-            			<script src="assets/js/jquery.min.js"></script>
-            			<script src="assets/js/skel.min.js"></script>
-            			<script src="assets/js/util.js"></script>
-            			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-            			<script src="assets/js/main.js"></script>
+            			<script src="/assets/js/jquery.min.js"></script>
+            			<script src="/assets/js/skel.min.js"></script>
+            			<script src="/assets/js/util.js"></script>
+            			<!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+            			<script src="/assets/js/main.js"></script>
 
   <% end %>
