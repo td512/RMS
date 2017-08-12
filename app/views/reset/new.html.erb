@@ -1,0 +1,19 @@
+<% content_for :title, "Reset Your Password" %>
+<% content_for :font, "https://fonts.googleapis.com/css?family=Montserrat:200" %>
+<% content_for :stylesheet, "login.css" %>
+<% content_for :login, "1" %>
+<% if current_user %>
+<script type="text/javascript">
+	window.location.href="/dash"
+</script>
+<% else %>
+<%= image_tag "logo-text-white.png", :height => '55', :class => 'logo' %> <!-- 180^2 for signup -->
+
+<%= form_for(:session, url: reset_path, :html => {:class => 'vertical-form'}) do |f| %>
+<legend>
+Reset Password
+</legend>
+<%= f.email_field :email, :placeholder => "Email" %>
+   <%= f.submit "Reset my password" %>
+<% end %>
+<% end %>
