@@ -44,7 +44,7 @@ $(window).load(function() {
           <ul>
             <li class="search">
               <a class="fa-search" href="#search">Search</a>
-              <form id="search" method="get" action="search">
+              <form id="search" method="get" action="/search">
                 <input type="text" name="q" placeholder="Search" />
               </form>
             </li>
@@ -93,28 +93,28 @@ $(window).load(function() {
           <article class="post">
             <header>
               <div class="title">
-                <h2><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>"><%= Post.limit(1).pluck(:post_title).first %></a></h2>
-                <p><%= Post.limit(1).pluck(:post_subtitle).first %></p>
+                <h2><a href="<%= post_path(Post.order('id ASC').limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>"><%= Post.order('id ASC').limit(1).pluck(:post_title).first %></a></h2>
+                <p><%= Post.order('id ASC').limit(1).pluck(:post_subtitle).first %></p>
               </div>
               <div class="meta">
-                <time class="published" datetime="<%= Post.limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
-                <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                <time class="published" datetime="<%= Post.order('id ASC').limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.order('id ASC').limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
+                <a href="#" class="author"><span class="name"><%= Post.order('id ASC').limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
               </div>
             </header>
             <a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
-            <p><%= Post.limit(1).pluck(:post_body).first %></p>
+            <p><%= Post.order('id ASC').limit(1).pluck(:post_body).first.truncate_words(25) %></p>
             <footer>
               <ul class="actions">
-                <li><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>" class="button big">Continue Reading</a></li>
+                <li><a href="<%= post_path(Post.order('id ASC').limit(1).pluck(:id).first, Post.order('id ASC').limit(1).pluck(:slug).first) %>" class="button big">Continue Reading</a></li>
               </ul>
               <ul class="stats">
-                <li><a href="#"><%= Post.limit(1).pluck(:post_category).first %></a></li>
+                <li><a href="<%= category_path(Post.order('id ASC').limit(1).pluck(:post_category).first) %>"><%= Post.order('id ASC').limit(1).pluck(:post_category).first %></a></li>
                 <!--<li><a href="#" class="icon fa-heart">28</a></li>
                 <li><a href="#" class="icon fa-comment">128</a></li>-->
               </ul>
             </footer>
           </article>
-          <% Post.all.offset(1).limit(2).each do |post| %>
+          <% Post.all.offset(0).limit(2).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>
@@ -127,13 +127,13 @@ $(window).load(function() {
                   <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
                 </div>
               </header>
-              <p><%= post.post_body %></p>
+              <p><%= post.post_body.truncate_words(25) %></p>
               <footer>
                 <ul class="actions">
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
-                  <li><a href="#"><%= post.post_category %></a></li>
+                  <li><a href="<%= category_path(post.post_category) %>"><%= post.post_category %></a></li>
                   <!--<li><a href="#" class="icon fa-heart">28</a></li>
                   <li><a href="#" class="icon fa-comment">128</a></li>-->
                 </ul>

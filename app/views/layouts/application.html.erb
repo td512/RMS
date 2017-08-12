@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Panther - <%= yield(:title) %></title>
+    <title><% if Setting.first.nil? %>Panther<% else %> <%= Setting.limit(1).pluck(:blog_name).first %> <% end %> - <%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">

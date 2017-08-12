@@ -60,7 +60,7 @@ $(window).load(function() {
 
         <!-- Search -->
           <section>
-            <form class="search" method="get" action="#">
+            <form class="search" method="get" action="/search">
               <input type="text" name="query" placeholder="Search" />
             </form>
           </section>
@@ -101,13 +101,13 @@ $(window).load(function() {
                   <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
                 </div>
               </header>
-              <p><%= post.post_body %></p>
+              <p><%= post.post_body.truncate_words(25) %></p>
               <footer>
                 <ul class="actions">
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
-                  <li><a href="#"><%= post.post_category %></a></li>
+                  <li><a href="<%= category_path(post.post_category) %>"><%= post.post_category %></a></li>
                   <!--<li><a href="#" class="icon fa-heart">28</a></li>
                   <li><a href="#" class="icon fa-comment">128</a></li>-->
                 </ul>

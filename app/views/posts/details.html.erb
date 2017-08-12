@@ -30,7 +30,7 @@ $(window).load(function() {
 <% else %>
 <% content_for :blog, "1" %>
 <% content_for :single, "1" %>
-<% content_for :title, Post.find_by(@id).post_title %>
+<% content_for :title, Post.find_by(id: params[:id]).post_title %>
 <!-- Wrapper -->
   <div id="wrapper">
 
@@ -46,7 +46,7 @@ $(window).load(function() {
           <ul>
             <li class="search">
               <a class="fa-search" href="#search">Search</a>
-              <form id="search" method="get" action="search">
+              <form id="search" method="get" action="/search">
                 <input type="text" name="q" placeholder="Search" />
               </form>
             </li>
@@ -95,18 +95,18 @@ $(window).load(function() {
           <article class="post">
             <header>
               <div class="title">
-                <h2><a href="<%= request.url %>"><%= Post.find_by(@id).post_title %></a></h2>
-                <p><%= Post.find_by(@id).post_subtitle %></p>
+                <h2><a href="<%= request.url %>"><%= Post.find_by(id: params[:id]).post_title %></a></h2>
+                <p><%= Post.find_by(id: params[:id]).post_subtitle %></p>
               </div>
               <div class="meta">
                 <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                <a href="#" class="author"><span class="name"><%= Post.find_by(@id).owner %></span><img src="images/avatar.jpg" alt="" /></a>
+                <a href="#" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="images/avatar.jpg" alt="" /></a>
               </div>
             </header>
-            <p><%= Post.find_by(@id).post_body %></p>
+            <p><%= Post.find_by(id: params[:id]).post_body %></p>
             <footer>
               <ul class="stats">
-                <li><a href="#"><%= Post.find_by(@id).post_category %></a></li>
+                <li><a href="<%= category_path(Post.find_by(id: params[:id]).post_category) %>"><%= Post.find_by(id: params[:id]).post_category %></a></li>
                 <!--<li><a href="#" class="icon fa-heart">28</a></li>
                 <li><a href="#" class="icon fa-comment">128</a></li>-->
               </ul>
