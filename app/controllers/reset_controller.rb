@@ -20,16 +20,12 @@ class ResetController < ApplicationController
   def reset
   end
   def change
-    t = Time.now
-    @ip = request.remote_ip
     if User.find_by(reset: params[:id])
       @user = User.find_by(reset: params[:id])
       if params[:id] == @user.reset
         @user.password = params[:session][:password]
         @user.reset = nil
         if @user.save
-          @action = Action.create(:action => 'Reset Password', :owner => @user.email, :ip => @ip, :date => t.strftime("%Y-%m-%d"), :status => 'Success')
-          @action.save
           session[:user_id] = @user.id
           redirect_to dash_path
       else
