@@ -3,26 +3,24 @@
   <head>
     <title>Panther - <%= yield(:title) %></title>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag 'application' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <% if content_for?(:font) %>
-    <%= stylesheet_link_tag yield(:font), :media => "all" %>
-    <% end %>
-    <% if content_for?(:font_narrow) %>
-    <%= stylesheet_link_tag yield(:font_narrow), :media => "all" %>
-    <% end %>
-    <% if content_for?(:framework) %>
-    <%= stylesheet_link_tag yield(:framework), :media => "all" %>
-    <% end %>
-    <% if content_for?(:frameworkr) %>
-    <%= stylesheet_link_tag yield(:frameworkr), :media => "all" %>
-    <% end %>
     <% if content_for?(:stylesheet) %>
-    <%= stylesheet_link_tag yield(:stylesheet), :media => "all" %>
+      <%= stylesheet_link_tag yield(:stylesheet), :media => "all" %>
+    <% end %>
+    <% if content_for?(:font) %>
+      <%= stylesheet_link_tag yield(:stylesheet), :media => "all" %>
+    <% end %>
+    <% if content_for?(:blog) %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <!--[if lte IE 8]><script src="/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="/assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
     <% end %>
     <% if content_for?(:coming_soon) %>
     <!-- fontawesome -->
@@ -49,7 +47,7 @@
       font-family: 'Cabin', sans-serif;
       text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
       color: #fff;
-      background: url("../images/avion_bg.jpg") no-repeat center center fixed;
+      background: url("/images/avion_bg.jpg") no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
@@ -78,7 +76,7 @@
       width: 100%;
       height: 100%;
       z-index: 9999;
-      background: url("../images/loading.gif") center no-repeat #032b44;
+      background: url("/images/loading.gif") center no-repeat #032b44;
     }
 
     .no-js #loader {

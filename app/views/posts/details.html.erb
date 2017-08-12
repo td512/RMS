@@ -29,7 +29,7 @@ $(window).load(function() {
 </script>
 <% else %>
 <% content_for :blog, "1" %>
-<% content_for :title, "Home" %>
+<% content_for :title, Post.find_by(@id).post_title %>
 <div id="wrapper">
 
   <!-- Main -->
@@ -38,7 +38,7 @@ $(window).load(function() {
 
         <!-- Header -->
           <header id="header">
-            <span class="logo"><strong><%= Setting.limit(1).pluck(:blog_name).first %></strong> > Home</span>
+            <span class="logo"><a href="<%=root_path%>"><strong><%= Setting.limit(1).pluck(:blog_name).first %></strong></a> > Posts > <%= Post.find_by(@id).post_title %></span>
             <ul class="icons">
               <li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
               <li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -46,33 +46,13 @@ $(window).load(function() {
           </header>
 
         <!-- Banner -->
-        <section id="banner">
-          <div class="content">
-            <header>
-              <h1><%= Post.limit(1).pluck(:post_title).first %></h1>
-              <p><%= Post.limit(1).pluck(:post_subtitle).first %></p>
-            </header>
-            <p><%= Post.limit(1).pluck(:post_body).first %></p>
-            <ul class="actions">
-              <li><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>" class="button big">Read On</a></li>
-            </ul>
-          </div>
-          <span class="image object">
-            <img src="/images/pic01.jpg" alt="" />
-          </span>
-        </section>
-        <% Post.all.offset(1).each do |post| %>
-        <section>
-          <div class="content">
-            <header>
-              <h1><%= post.post_title %></h1>
-              <p><%= post.post_subtitle %></p>
-            </header>
-            <p><%= post.post_body %></p>
-            <ul class="actions">
-              <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Read On</a></li>
-            </ul>
-          </div>
-        </section>
-        <% end %>
+          <section>
+            <div class="content">
+              <header>
+                <h1><%= Post.find_by(@id).post_title %></h1>
+                <p><%= Post.find_by(@id).post_subtitle %></p>
+              </header>
+              <p><%= Post.find_by(@id).post_body %></p>
+            </div>
+          </section>
   <% end %>

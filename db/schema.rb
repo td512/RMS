@@ -19,16 +19,18 @@ ActiveRecord::Schema.define(version: 20170811204509) do
     t.string   "slug"
     t.string   "owner"
     t.string   "post_title"
+    t.string   "post_subtitle"
     t.string   "post_body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "settings", force: :cascade do |t|
-    t.string   "name"
-    t.string   "css"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "blog_name"
+    t.string   "blog_facebook"
+    t.string   "blog_twitter"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -28,4 +28,6 @@ scope '/signup' do
   get '/error/email'  => 'users#emlerr'
   post '/'  => 'users#create'
 end
+get '/posts/:id' => 'posts#details'
+get '/posts/:id/:slug' => 'posts#details', as: :post
 end
