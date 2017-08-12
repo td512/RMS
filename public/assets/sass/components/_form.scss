@@ -1,5 +1,5 @@
 ///
-/// Editorial by HTML5 UP
+/// Future Imperfect by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
@@ -8,6 +8,28 @@
 
 	form {
 		margin: 0 0 _size(element-margin) 0;
+
+		&.search {
+			@include icon;
+			position: relative;
+
+			&:before {
+				color: _palette(fg-light);
+				content: '\f002';
+				display: block;
+				height: _size(element-height);
+				left: 0;
+				line-height: _size(element-height);
+				position: absolute;
+				text-align: center;
+				top: 0;
+				width: 2.5em;
+			}
+
+			> input:first-child {
+				padding-left: 2.5em;
+			}
+		}
 	}
 
 	label {
@@ -22,15 +44,13 @@
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
-	input[type="search"],
-	input[type="url"],
 	select,
 	textarea {
 		@include vendor('appearance', 'none');
-		background: _palette(bg);
-		border-radius: _size(border-radius);
+		background: _palette(border-bg);
 		border: none;
 		border: solid 1px _palette(border);
+		border-radius: 0;
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -44,7 +64,7 @@
 
 		&:focus {
 			border-color: _palette(accent);
-			box-shadow: 0 0 0 1px _palette(accent);
+			box-shadow: inset 0 0 0 1px _palette(accent);
 		}
 	}
 
@@ -75,9 +95,6 @@
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
-	input[type="tel"],
-	input[type="search"],
-	input[type="url"],
 	select {
 		height: _size(element-height);
 	}
@@ -108,8 +125,7 @@
 			position: relative;
 
 			&:before {
-				background: _palette(bg);
-				border-radius: _size(border-radius);
+				background: _palette(border-bg);
 				border: solid 1px _palette(border);
 				content: '';
 				display: inline-block;
@@ -143,7 +159,6 @@
 	input[type="checkbox"] {
 		& + label {
 			&:before {
-				border-radius: _size(border-radius);
 			}
 		}
 	}

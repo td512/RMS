@@ -30,49 +30,177 @@ $(window).load(function() {
 <% else %>
 <% content_for :blog, "1" %>
 <% content_for :title, "Home" %>
-<div id="wrapper">
+<!-- Wrapper -->
+  <div id="wrapper">
 
-  <!-- Main -->
-    <div id="main">
-      <div class="inner">
+    <!-- Header -->
+      <header id="header">
+        <h1><a href="#"><%= Setting.limit(1).pluck(:blog_name).first %></a></h1>
+        <nav class="links">
+          <ul>
+          </ul>
+        </nav>
+        <nav class="main">
+          <ul>
+            <li class="search">
+              <a class="fa-search" href="#search">Search</a>
+              <form id="search" method="get" action="#">
+                <input type="text" name="query" placeholder="Search" />
+              </form>
+            </li>
+            <li class="menu">
+              <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <!-- Header -->
-          <header id="header">
-            <span class="logo"><strong><%= Setting.limit(1).pluck(:blog_name).first %></strong> > Home</span>
-            <ul class="icons">
-              <li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-              <li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+    <!-- Menu -->
+      <section id="menu">
+
+        <!-- Search -->
+          <section>
+            <form class="search" method="get" action="#">
+              <input type="text" name="query" placeholder="Search" />
+            </form>
+          </section>
+
+        <!-- Links -->
+          <section>
+            <ul class="links">
+<!--              <li>
+                <a href="#">
+                  <h3>Etiam sed consequat</h3>
+                  <p>Porta lectus amet ultricies</p>
+                </a>
+              </li>-->
             </ul>
-          </header>
+          </section>
 
-        <!-- Banner -->
-        <section id="banner">
-          <div class="content">
+        <!-- Actions -->
+          <section>
+            <ul class="actions vertical">
+              <li><a href="<%= login_path %>" class="button big fit">Log In</a></li>
+            </ul>
+          </section>
+
+      </section>
+
+    <!-- Main -->
+      <div id="main">
+
+        <!-- Post -->
+          <article class="post">
             <header>
-              <h1><%= Post.limit(1).pluck(:post_title).first %></h1>
-              <p><%= Post.limit(1).pluck(:post_subtitle).first %></p>
+              <div class="title">
+                <h2><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>"><%= Post.limit(1).pluck(:post_title).first %></a></h2>
+                <p><%= Post.limit(1).pluck(:post_subtitle).first %></p>
+              </div>
+              <div class="meta">
+                <time class="published" datetime="<%= Post.limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
+                <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+              </div>
             </header>
+            <a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
             <p><%= Post.limit(1).pluck(:post_body).first %></p>
-            <ul class="actions">
-              <li><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>" class="button big">Read On</a></li>
-            </ul>
-          </div>
-          <span class="image object">
-            <img src="/images/pic01.jpg" alt="" />
-          </span>
-        </section>
-        <% Post.all.offset(1).each do |post| %>
-        <section>
-          <div class="content">
-            <header>
-              <h1><%= post.post_title %></h1>
-              <p><%= post.post_subtitle %></p>
-            </header>
-            <p><%= post.post_body %></p>
-            <ul class="actions">
-              <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Read On</a></li>
-            </ul>
-          </div>
-        </section>
-        <% end %>
+            <footer>
+              <ul class="actions">
+                <li><a href="<%= post_path(Post.limit(1).pluck(:id).first, Post.limit(1).pluck(:slug).first) %>" class="button big">Continue Reading</a></li>
+              </ul>
+              <ul class="stats">
+                <li><a href="#"><%= Post.limit(1).pluck(:post_category).first %></a></li>
+                <!--<li><a href="#" class="icon fa-heart">28</a></li>
+                <li><a href="#" class="icon fa-comment">128</a></li>-->
+              </ul>
+            </footer>
+          </article>
+          <% Post.all.offset(1).limit(2).each do |post| %>
+          <!-- Post -->
+            <article class="post">
+              <header>
+                <div class="title">
+                  <h2><a href="<%= post_path(post.id, post.slug) %>"><%= post.post_title %></a></h2>
+                  <p><%= post.post_subtitle %></p>
+                </div>
+                <div class="meta">
+                  <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
+                  <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                </div>
+              </header>
+              <p><%= post.post_body %></p>
+              <footer>
+                <ul class="actions">
+                  <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
+                </ul>
+                <ul class="stats">
+                  <li><a href="#"><%= post.post_category %></a></li>
+                  <!--<li><a href="#" class="icon fa-heart">28</a></li>
+                  <li><a href="#" class="icon fa-comment">128</a></li>-->
+                </ul>
+              </footer>
+            </article>
+            <% end %>
+
+            					</div>
+
+            				<!-- Sidebar -->
+            					<section id="sidebar">
+
+            						<!-- Intro -->
+            							<section id="intro">
+            								<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+            								<header>
+            									<h2><%= Setting.limit(1).pluck(:blog_name).first %></h2>
+            									<p><%= Setting.limit(1).pluck(:blog_tagline).first %></p>
+            								</header>
+            							</section>
+
+            						<!-- Mini Posts -->
+            							<section>
+            								<div class="mini-posts">
+                              <% Post.all.offset(3).limit(3).each do |post| %>
+            									<!-- Mini Post -->
+            										<article class="mini-post">
+            											<header>
+            												<h3><a href="<%= post_path(post.id, post.slug) %>"><%= post.post_title %></a></h3>
+            												<time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
+            												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+            											</header>
+            											<a href="#" class="image"><img src="images/pic10.jpg" alt="" /></a>
+            										</article>
+                                <% end %>
+            								</div>
+            							</section>
+
+            						<!-- About -->
+            							<section class="blurb">
+            								<h2>About</h2>
+            								<p><%= Setting.limit(1).pluck(:blog_about).first %></p>
+            								<ul class="actions">
+            									<!--<li><a href="#" class="button">Learn More</a></li>-->
+            								</ul>
+            							</section>
+
+            						<!-- Footer -->
+            							<section id="footer">
+            								<ul class="icons">
+            									<li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="fa-twitter"><span class="label">Twitter</span></a></li>
+            									<li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="fa-facebook"><span class="label">Facebook</span></a></li>
+            									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
+            									<li><a href="mailto:<%= Setting.limit(1).pluck(:blog_email).first %>" class="fa-envelope"><span class="label">Email</span></a></li>
+            								</ul>
+            								<p class="copyright">&copy; <%= Date.today.year %> <%= Setting.limit(1).pluck(:blog_name).first %></p>
+            							</section>
+
+            					</section>
+
+            			</div>
+
+            		<!-- Scripts -->
+            			<script src="assets/js/jquery.min.js"></script>
+            			<script src="assets/js/skel.min.js"></script>
+            			<script src="assets/js/util.js"></script>
+            			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+            			<script src="assets/js/main.js"></script>
+
   <% end %>

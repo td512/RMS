@@ -21,14 +21,18 @@ ActiveRecord::Schema.define(version: 20170811204509) do
     t.string   "post_title"
     t.string   "post_subtitle"
     t.string   "post_body"
+    t.string   "post_category"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "settings", force: :cascade do |t|
     t.string   "blog_name"
+    t.string   "blog_tagline"
+    t.string   "blog_about"
     t.string   "blog_facebook"
     t.string   "blog_twitter"
+    t.string   "blog_email"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
