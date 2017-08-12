@@ -35,7 +35,7 @@ $(window).load(function() {
 
     <!-- Header -->
       <header id="header">
-        <h1><a href="#"><%= Setting.limit(1).pluck(:blog_name).first %></a></h1>
+        <h1><a href="<%= root_path %>"><%= Setting.limit(1).pluck(:blog_name).first %></a></h1>
         <nav class="links">
           <ul>
           </ul>
@@ -148,7 +148,7 @@ $(window).load(function() {
 
             						<!-- Intro -->
             							<section id="intro">
-            								<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+            								<a href="<%= root_path %>" class="logo"><img src="images/logo.jpg" alt="" /></a>
             								<header>
             									<h2><%= Setting.limit(1).pluck(:blog_name).first %></h2>
             									<p><%= Setting.limit(1).pluck(:blog_tagline).first %></p>
@@ -186,7 +186,6 @@ $(window).load(function() {
             								<ul class="icons">
             									<li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="fa-twitter"><span class="label">Twitter</span></a></li>
             									<li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="fa-facebook"><span class="label">Facebook</span></a></li>
-            									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
             									<li><a href="mailto:<%= Setting.limit(1).pluck(:blog_email).first %>" class="fa-envelope"><span class="label">Email</span></a></li>
             								</ul>
             								<p class="copyright">&copy; <%= Date.today.year %> <%= Setting.limit(1).pluck(:blog_name).first %></p>

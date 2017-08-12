@@ -237,7 +237,7 @@
     <!-- Panther, Build 35. Render Time: <%= Time.now-@start_time %> seconds -->
   </head>
 
-<%if content_for?(:login) %><style> body {font-family: "helvetica neue", "helvetica", "arial", sans-serif;}</style><body class="login"><%end%> <body>
+<%if content_for?(:login) %><style> body {font-family: "helvetica neue", "helvetica", "arial", sans-serif;}</style><body class="login"><%end%> <body <% if content_for?(:single) %> class="single" <% end %>>
     <%= yield %>
   </body>
 </html>

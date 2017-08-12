@@ -12,18 +12,34 @@ def create
     redirect_to '/signup/error/email'
   else
     if EmailValidator.valid?(@user.email)
-      act_code = SecureRandom.hex(6)
-      token = SecureRandom.hex(48)
-      @user.activation_code = act_code
-      @user.activated = '0'
-      @user.level = '0'
-      @user.enabled = '1'
-      if @user.save
-        PostmarkMailer.verify(@user).deliver_now
-        session[:user_id] = @user.id
-        redirect_to dash_path
+      if User.first.nil?
+        act_code = SecureRandom.hex(6)
+        token = SecureRandom.hex(48)
+        @user.activation_code = act_code
+        @user.activated = '0'
+        @user.level = '1'
+        @user.enabled = '1'
+        if @user.save
+          PostmarkMailer.verify(@user).deliver_now
+          session[:user_id] = @user.id
+          redirect_to dash_path
+        else
+          redirect_to '/signup/error/email'
+        end
       else
-        redirect_to '/signup/error/email'
+        act_code = SecureRandom.hex(6)
+        token = SecureRandom.hex(48)
+        @user.activation_code = act_code
+        @user.activated = '0'
+        @user.level = '0'
+        @user.enabled = '1'
+        if @user.save
+          PostmarkMailer.verify(@user).deliver_now
+          session[:user_id] = @user.id
+          redirect_to dash_path
+        else
+          redirect_to '/signup/error/email'
+        end
       end
   end
 end
