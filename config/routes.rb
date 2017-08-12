@@ -28,6 +28,12 @@ scope '/signup' do
   get '/error/email'  => 'users#emlerr'
   post '/'  => 'users#create'
 end
+# Verify
+scope '/verify' do
+  get '/' => 'verify#new', as: :verify
+  post '/' => 'verify#verify'
+  get '/error' => 'verify#error', as: :verify_error
+end
 get '/posts/:id' => 'posts#details'
 get '/posts/:id/:slug' => 'posts#details', as: :post
 get '/category/:id' => 'posts#categories', as: :category

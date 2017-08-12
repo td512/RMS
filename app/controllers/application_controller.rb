@@ -29,7 +29,7 @@ end
 helper_method :check_admin
 helper_method :check_user
 helper_method :check_activated
-before_filter :set_cache_headers
+before_action :set_cache_headers
 
   private
 
