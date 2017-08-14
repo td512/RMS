@@ -21,7 +21,7 @@ def check_user
   redirect_to verify_path unless current_user && current_user.activated == '1'
 end
 def check_admin
-  redirect_to dash_path unless current_user && current_user.level == '1'
+  redirect_to root_path unless current_user && current_user.level == '1'
 end
 def check_activated
   redirect_to logout_path unless current_user && current_user.enabled == '1'

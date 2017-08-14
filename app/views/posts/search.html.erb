@@ -9,11 +9,7 @@
   <div id="wrapper">
 
     <%= render 'partials/blog_header' %>
-      <%= if current_user
-      render 'partials/blog_menu_loggedin'
-      else
-        render 'partials/blog_menu'
-      end %>
+        <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
           <% Post.order('id ASC').where("post_title ~ ?", params[:q]).each do |post| %>
@@ -26,7 +22,7 @@
                 </div>
                 <div class="meta">
                   <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-                  <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
+                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
                 </div>
               </header>
               <p><%= post.post_body.truncate_words(25) %></p>

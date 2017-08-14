@@ -8,11 +8,11 @@
 <!-- Wrapper -->
   <div id="wrapper">
 
-  <%= render 'partials/blog_header' %>
-      <%= render 'partials/blog_menu' %>
+    <%= render 'partials/blog_header' %>
+        <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
-          <% Post.order('id ASC').where("post_category = ?", params[:id]).each do |post| %>
+          <% Post.order('id ASC').where("owner ~ ?", params[:q]).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>
@@ -40,29 +40,26 @@
             <% end %>
           </section>
 
-<%= render 'partials/blog_footer' %>
-
-            					</section>
-
+          <%= render 'partials/blog_footer' %>
             			</div>
 
             		<!-- Scripts -->
-            			<script>
-                  <%= render 'future_imperfect/jquery' %>
-                  </script>
-                  <script>
-                  <%= render 'future_imperfect/skel' %>
-                  </script>
-                  <script>
-                  <%= render 'future_imperfect/util' %>
-                  </script>
-            			<!--[if lte IE 8]>
-                  <script>
-                  <%= render 'future_imperfect/respond' %>
-                  </script>
-                  <![endif]-->
-                  <script>
-                  <%= render 'future_imperfect/main' %>
-                  </script>
+                <script>
+                <%= render 'future_imperfect/jquery' %>
+                </script>
+                <script>
+                <%= render 'future_imperfect/skel' %>
+                </script>
+                <script>
+                <%= render 'future_imperfect/util' %>
+                </script>
+                <!--[if lte IE 8]>
+                <script>
+                <%= render 'future_imperfect/respond' %>
+                </script>
+                <![endif]-->
+                <script>
+                <%= render 'future_imperfect/main' %>
+                </script>
 
   <% end %>

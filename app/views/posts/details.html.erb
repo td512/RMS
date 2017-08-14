@@ -10,11 +10,7 @@
   <div id="wrapper">
 
 <%= render 'partials/blog_header' %>
-      <%= if current_user
-      render 'partials/blog_menu_loggedin'
-      else
-        render 'partials/blog_menu'
-      end %>
+      <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
 
@@ -27,7 +23,7 @@
               </div>
               <div class="meta">
                 <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                <a href="#" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="/images/avatar.jpg" alt="" /></a>
+                <a href="<%= asearch_path %>?q=<%=Post.find_by(id: params[:id]).owner%>" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="/images/avatar.jpg" alt="" /></a>
               </div>
             </header>
             <p><%= Post.find_by(id: params[:id]).post_body %></p>

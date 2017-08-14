@@ -8,11 +8,7 @@
 <!-- Wrapper -->
   <div id="wrapper">
     <%= render 'partials/blog_header' %>
-      <%= if current_user
-      render 'partials/blog_menu_loggedin'
-      else
-        render 'partials/blog_menu'
-      end %>
+      <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
 
@@ -25,7 +21,7 @@
               </div>
               <div class="meta">
                 <time class="published" datetime="<%= Post.order('id ASC').limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.order('id ASC').limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
-                <a href="#" class="author"><span class="name"><%= Post.order('id ASC').limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                <a href="<%= asearch_path %>?q=<%=Post.order('id ASC').limit(1).pluck(:owner).first%>" class="author"><span class="name"><%= Post.order('id ASC').limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
               </div>
             </header>
             <a href="#" class="image featured"><img src="images/pic10.jpg" alt="" /></a>
@@ -51,7 +47,7 @@
                 </div>
                 <div class="meta">
                   <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-                  <a href="#" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
                 </div>
               </header>
               <p><%= post.post_body.truncate_words(25) %></p>
@@ -91,9 +87,9 @@
             											<header>
             												<h3><a href="<%= post_path(post.id, post.slug) %>"><%= post.post_title %></a></h3>
             												<time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-            												<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+            												<a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><img src="images/avatar.jpg" alt="" /></a>
             											</header>
-            											<a href="#" class="image"><img src="images/pic10.jpg" alt="" /></a>
+            											<a href="<%= post_path(post.id, post.slug) %>" class="image"><img src="images/pic10.jpg" alt="" /></a>
             										</article>
                                 <% end %>
             								</div>
