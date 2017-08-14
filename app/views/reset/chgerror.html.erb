@@ -2,11 +2,6 @@
 <% content_for :font, "https://fonts.googleapis.com/css?family=Montserrat:200" %>
 <% content_for :stylesheet, "login.css" %>
 <% content_for :login, "1" %>
-<% if current_user %>
-<script type="text/javascript">
-	window.location.href="/dash"
-</script>
-<% else %>
 <ul class="notice errors">
 <li>Whoops! Looks like that wasn't a valid link.</li>
 </ul>
@@ -16,5 +11,4 @@
 <legend>
 We slipped up!
 </legend>
-<% end %>
 <% end %>

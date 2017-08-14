@@ -1,0 +1,58 @@
+<%= content_for :dash, "1" %>
+<!-- Wrapper -->
+  <div id="wrapper">
+    <%= render 'partials/dash_nav' %>
+
+    <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h1>Welcome back, <%= current_user.first_name %></h1>
+          </header>
+          <section class="tiles">
+            <article class="style1">
+              <span class="image">
+                <img src="images/pic01.jpg" alt="" />
+              </span>
+              <a href="generic.html">
+                <h2>Posts</h2>
+                <div class="content">
+                  <p>Writing a post? Let's go!</p>
+                </div>
+              </a>
+            </article>
+            <article class="style2">
+              <span class="image">
+                <img src="images/pic02.jpg" alt="" />
+              </span>
+              <a href="generic.html">
+                <h2>Settings</h2>
+                <div class="content">
+                  <p>Set your site details here</p>
+                </div>
+              </a>
+            </article>
+          </section>
+        </div>
+      </div>
+
+  </div>
+
+  <!-- Scripts -->
+    <script>
+    <%= render 'phantom/jquery' %>
+    </script>
+    <script>
+    <%= render 'phantom/skel' %>
+    </script>
+    <script>
+    <%= render 'phantom/util' %>
+    </script>
+    <!--[if lte IE 8]>
+    <script>
+    <%= render 'phantom/respond' %>
+    </script>
+    <![endif]-->
+    <script>
+    <%= render 'phantom/main' %>
+    </script>

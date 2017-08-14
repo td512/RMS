@@ -8,7 +8,7 @@ history.replaceState("", "", "/login");
 <ul class="notice success">
 <li>Yay! You've been logged out.</li>
 </ul>
-<%= image_tag "logo-text-white.png", :height => '55', :class => 'logo' %> <!-- 180^2 for signup -->
+<a href="<%= root_path %>"><%= image_tag "logo-text-white.png", :height => '55', :class => 'logo' %></a> <!-- 180^2 for signup -->
 
 <%= form_for(:session, url: login_path, :html => {:class => 'vertical-form'}) do |f| %>
 <legend>

@@ -17,6 +17,14 @@
     <% if content_for?(:blog) %>
     <%= render 'partials/blog' %>
     <% end %>
+    <% if content_for?(:dash) %>
+    <%= render 'partials/dash' %>
+    <style>
+    #header {
+      padding: 4em 0 0.1em 0 !important;
+    }
+    </style>
+    <% end %>
     <% if content_for?(:coming_soon) %>
     <%= render 'partials/comingsoon' %>
     <% end %>

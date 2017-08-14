@@ -2,11 +2,6 @@
 <% content_for :font, "https://fonts.googleapis.com/css?family=Montserrat:200" %>
 <% content_for :stylesheet, "login.css" %>
 <% content_for :login, "1" %>
-<% if current_user %>
-<script type="text/javascript">
-	window.location.href="/dash"
-</script>
-<% else %>
 <ul class="notice errors">
 <li>Oops! We don't recognise that email address.</li>
 </ul>
@@ -18,5 +13,4 @@ Reset Password
 </legend>
 <%= f.email_field :email, :placeholder => "Email" %>
    <%= f.submit "Reset my password" %>
-<% end %>
 <% end %>
