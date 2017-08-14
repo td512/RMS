@@ -1,0 +1,21 @@
+<!-- Header -->
+  <header id="header">
+    <h1><a href="<%= root_path %>"><%= Setting.limit(1).pluck(:blog_name).first %></a></h1>
+    <nav class="links">
+      <ul>
+      </ul>
+    </nav>
+    <nav class="main">
+      <ul>
+        <li class="search">
+          <a class="fa-search" href="#search">Search</a>
+          <form id="search" method="get" action="/search">
+            <input type="text" name="q" placeholder="Search" autocomplete="off" />
+          </form>
+        </li>
+        <li class="menu">
+          <a class="fa-bars" href="#menu">Menu</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
