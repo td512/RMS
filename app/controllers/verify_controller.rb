@@ -10,8 +10,6 @@ class VerifyController < ApplicationController
       @user.activated = '1'
       @user.activation_code = nil
       if @user.save
-          @action = Action.create(:action => 'Verify Account', :owner => @user.email, :ip => @ip, :date => t.strftime("%Y-%m-%d"), :status => 'Success')
-          @action.save
           redirect_to dash_path
         end
       else

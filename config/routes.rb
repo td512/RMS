@@ -38,4 +38,5 @@ get '/posts/:id' => 'posts#details'
 get '/posts/:id/:slug' => 'posts#details', as: :post
 get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search
+get '/dash' => 'dashboard#new', as: :dash
 end
