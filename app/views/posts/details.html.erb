@@ -1,32 +1,7 @@
 <% if Post.first.nil? %>
 <% content_for :coming_soon, "1" %>
 <% content_for :title, "Coming Soon" %>
-<div class="se-pre-con"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="header-logo-wrapper">
-        <%= image_tag "logo-text-white.png", :style => 'height: 150px !important;', :class => 'img-responsive center-block' %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-    <h1 class="text-center">Welcome to Panther!</h1>
-    <h3 class="text-center">The site owner probably hasn't set this up yet</h3>
-    </div>
-  </div>
-
-</div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-$(window).load(function() {
-  // Animate loader off screen
-  $(".se-pre-con").fadeOut("slow");
-});
-</script>
+<%= render 'partials/comingsoon_html' %>
 <% else %>
 <% content_for :blog, "1" %>
 <% content_for :single, "1" %>
@@ -100,7 +75,7 @@ $(window).load(function() {
               </div>
               <div class="meta">
                 <time class="published" datetime="2015-11-01">November 1, 2015</time>
-                <a href="#" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="images/avatar.jpg" alt="" /></a>
+                <a href="#" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="/images/avatar.jpg" alt="" /></a>
               </div>
             </header>
             <p><%= Post.find_by(id: params[:id]).post_body %></p>
@@ -128,9 +103,21 @@ $(window).load(function() {
   </div>
 
 <!-- Scripts -->
-  <script src="/assets/js/jquery.min.js"></script>
-  <script src="/assets/js/skel.min.js"></script>
-  <script src="/assets/js/util.js"></script>
-  <!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
-  <script src="/assets/js/main.js"></script>
+<script>
+<%= render 'future_imperfect/jquery' %>
+</script>
+<script>
+<%= render 'future_imperfect/skel' %>
+</script>
+<script>
+<%= render 'future_imperfect/util' %>
+</script>
+<!--[if lte IE 8]>
+<script>
+<%= render 'future_imperfect/respond' %>
+</script>
+<![endif]-->
+<script>
+<%= render 'future_imperfect/main' %>
+</script>
   <% end %>

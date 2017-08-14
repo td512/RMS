@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     end
   end
   def create
-  t = Time.now
+  @user = User.find_by_email(params[:session][:email])
   if @user && @user.authenticate(params[:session][:password])
     if @user.enabled == "0"
       redirect_to logout_path
