@@ -1,0 +1,82 @@
+<% content_for :title, current_user.first_name + "'s Profile" %>
+<% content_for :dash, "1" %>
+<!-- Wrapper -->
+  <div id="wrapper">
+
+  <%= render 'partials/dash_nav' %>
+
+    <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header>
+            <h1><span id="user"><%= current_user.first_name %></span>'s Profile</h1>
+            <p>Time to update your details?</p>
+          </header>
+          <section>
+								<%= form_for(:settings, url: settings_path) do |f| %>
+									<div class="field half first">
+                    <% if Setting.first.nil? %>
+                    <%= f.text_field :blog_name, :placeholder => "Blog Name" %>
+                    <% else %>
+                    <%= f.text_field :blog_name, :placeholder => Setting.limit(1).pluck(:blog_name).first %>
+                    <% end %>
+									</div>
+                  <div class="field half">
+                    <% if Setting.first.nil? %>
+                    <%= f.text_field :blog_name, :placeholder => "Contact Email" %>
+                    <% else %>
+                    <%= f.text_field :blog_email, :placeholder => Setting.limit(1).pluck(:blog_email).first %>
+                    <% end %>
+									</div>
+									<div class="field">
+                    <% if Setting.first.nil? %>
+                    <%= f.text_field :blog_name, :placeholder => "Blog Tagline" %>
+                    <% else %>
+										<%= f.text_field :blog_tagline, :placeholder => Setting.limit(1).pluck(:blog_tagline).first %>
+                    <% end %>
+									</div>
+                  <div class="field half first">
+                    <% if Setting.first.nil? %>
+                    <%= f.text_field :blog_name, :placeholder => "Facebook" %>
+                    <% else %>
+										<%= f.text_field :blog_facebook, :placeholder => Setting.limit(1).pluck(:blog_facebook).first %>
+                    <% end %>
+									</div>
+                  <div class="field half">
+                    <% if Setting.first.nil? %>
+                    <%= f.text_field :blog_name, :placeholder => "Twitter" %>
+                    <% else %>
+										<%= f.text_field :blog_twitter, :placeholder => Setting.limit(1).pluck(:blog_twitter).first %>
+                    <% end %>
+									</div>
+									<ul class="actions">
+										<li><%= f.submit "Update", :class => "special" %></li>
+									</ul>
+                </div>
+
+								<% end %>
+							</section>
+
+        </div>
+      </div>
+
+  </div>
+
+  <!-- Scripts -->
+    <script>
+    <%= render 'phantom/jquery' %>
+    </script>
+    <script>
+    <%= render 'phantom/skel' %>
+    </script>
+    <script>
+    <%= render 'phantom/util' %>
+    </script>
+    <!--[if lte IE 8]>
+    <script>
+    <%= render 'phantom/respond' %>
+    </script>
+    <![endif]-->
+    <script>
+    <%= render 'phantom/main' %>
+    </script>

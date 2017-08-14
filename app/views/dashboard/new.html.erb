@@ -1,4 +1,5 @@
 <%= content_for :dash, "1" %>
+<%= content_for :title, "Your Dashboard" %>
 <!-- Wrapper -->
   <div id="wrapper">
     <%= render 'partials/dash_nav' %>
@@ -25,7 +26,7 @@
               <span class="image">
                 <img src="images/pic02.jpg" alt="" />
               </span>
-              <a href="generic.html">
+              <a href="<%= settings_path %>">
                 <h2>Settings</h2>
                 <div class="content">
                   <p>Set your site details here</p>

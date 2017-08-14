@@ -34,8 +34,16 @@ scope '/verify' do
   post '/' => 'verify#verify'
   get '/error' => 'verify#error', as: :verify_error
 end
-get '/posts/:id' => 'posts#details'
-get '/posts/:id/:slug' => 'posts#details', as: :post
+# Settings
+scope '/settings' do
+  get '/' => 'dashboard#settings', as: :settings
+  post '/' => 'dashboard#apply'
+end
+# Posts
+scope '/posts' do
+  get '/:id' => 'posts#details'
+  get '/:id/:slug' => 'posts#details', as: :post
+end
 get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search
 get '/author-posts' => 'posts#author_search', as: :asearch
