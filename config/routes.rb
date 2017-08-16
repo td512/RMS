@@ -57,7 +57,7 @@ scope '/posts' do
 end
 get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search
-get '/author-posts' => 'posts#author_search', as: :asearch
+get '/author-posts/:q' => 'posts#author_search', as: :asearch
 get '/dash' => 'dashboard#new', as: :dash
 get '/soon' => 'posts#mock'
 end

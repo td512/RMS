@@ -22,7 +22,7 @@
                 </div>
                 <div class="meta">
                   <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
+                  <a href="<%= asearch_path(post.owner) %>" class="author"><span class="name"><%= User.find_by(id: Post.limit(1).pluck(:owner).first).first_name %></span><img src="<%= gravatar_url(User.find_by(id: Post.limit(1).pluck(:owner).first).email, 200) %>" alt="" /></a>
                 </div>
               </header>
               <p><%= raw post.post_body.truncate_words(25) %></p>

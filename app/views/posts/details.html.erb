@@ -23,7 +23,7 @@
               </div>
               <div class="meta">
                 <time class="published" datetime="<%= Post.find_by(id: params[:id]).created_at.strftime("%F") %>"><%= Post.find_by(id: params[:id]).created_at.strftime("%B %e, %Y") %></time>
-                <a href="<%= asearch_path %>?q=<%=Post.find_by(id: params[:id]).owner%>" class="author"><span class="name"><%= Post.find_by(id: params[:id]).owner %></span><img src="/images/avatar.jpg" alt="" /></a>
+                <a href="<%= asearch_path(Post.find_by(id: params[:id]).owner) %>" class="author"><span class="name"><%= User.find_by(id: Post.find_by(id: params[:id]).owner).first_name %></span><img src="<%= gravatar_url(User.find_by(id: Post.find_by(id: params[:id]).owner).email, 200) %>" alt="" /></a>
               </div>
             </header>
             <p><%= raw Post.find_by(id: params[:id]).post_body %></p>

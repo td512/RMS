@@ -12,7 +12,7 @@
         <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
-          <% Post.order('id DESC').where("owner ~ ?", params[:q]).each do |post| %>
+          <% Post.order('id DESC').where("owner = ?", params[:q]).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>
@@ -22,17 +22,17 @@
                 </div>
                 <div class="meta">
                   <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
+                  <a href="<%= asearch_path(post.owner) %>" class="author"><span class="name"><%= User.find_by(id: Post.limit(1).pluck(:owner).first).first_name %></span><img src="<%= gravatar_url(User.find_by(id: Post.limit(1).pluck(:owner).first).email, 200) %>" alt="" /></a>
                 </div>
               </header>
-              <p><%= post.post_body.truncate_words(25) %></p>
+              <p><%= raw post.post_body.truncate_words(25) %></p>
               <footer>
                 <ul class="actions">
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
                   <li><% if post.post_category.present?
-                    post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
+                    post.post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
                   <!--<li><a href="#" class="icon fa-heart">28</a></li>
                   <li><a href="#" class="icon fa-comment">128</a></li>-->
                 </ul>

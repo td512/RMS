@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :require_user, except: [:details]
-  before_action :check_user, except: [:details]
-  before_action :check_admin, except: [:details]
-  before_action :check_activated, except: [:details]
+  before_action :require_user, except: [:details, :new, :author_search, :categories]
+  before_action :check_user, except: [:details, :new, :author_search, :categories]
+  before_action :check_admin, except: [:details, :new, :author_search, :categories]
+  before_action :check_activated, except: [:details, :new, :author_search, :categories]
   def update
     post = Post.find_by(id: params[:id])
     if params[:write][:title].present?
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
   end
   def post
     post = Post.new()
-    post.owner = current_user.first_name
+    post.owner = current_user.id
     if params[:write][:title].present?
       post.post_title = params[:write][:title]
     else

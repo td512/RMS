@@ -1,9 +1,9 @@
 <!-- Footer -->
   <section id="footer">
     <ul class="icons">
-      <li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="fa-twitter"><span class="label">Twitter</span></a></li>
-      <li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="fa-facebook"><span class="label">Facebook</span></a></li>
-      <li><a href="mailto:<%= Setting.limit(1).pluck(:blog_email).first %>" class="fa-envelope"><span class="label">Email</span></a></li>
+      <% if Setting.limit(1).pluck(:blog_twitter).first %><li><a href="<%= Setting.limit(1).pluck(:blog_twitter).first %>" class="fa-twitter"><span class="label">Twitter</span></a></li><% end %>
+      <% if Setting.limit(1).pluck(:blog_facebook).first %><li><a href="<%= Setting.limit(1).pluck(:blog_facebook).first %>" class="fa-facebook"><span class="label">Facebook</span></a></li><% end %>
+      <% if Setting.limit(1).pluck(:blog_email).first %><li><a href="mailto:<%= Setting.limit(1).pluck(:blog_email).first %>" class="fa-envelope"><span class="label">Email</span></a></li><% end %>
     </ul>
     <p class="copyright">&copy; <%= Date.today.year %> <%= Setting.limit(1).pluck(:blog_name).first %></p>
   </section>
