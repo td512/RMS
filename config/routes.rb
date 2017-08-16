@@ -39,6 +39,14 @@ scope '/settings' do
   get '/' => 'dashboard#settings', as: :settings
   post '/' => 'dashboard#apply'
 end
+# Write
+scope '/write' do
+  get '/' => 'posts#write', as: :write
+  post '/' => 'posts#post'
+end
+scope '/manage' do
+  get '/' => 'posts#manage', as: :manage
+end
 # Posts
 scope '/posts' do
   get '/:id' => 'posts#details'
