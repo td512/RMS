@@ -7,10 +7,18 @@
     <!-- Main -->
       <div id="main">
         <div class="inner">
+
           <header>
             <h1>Time to write a post?</h1>
           </header>
           <%= form_for(:write, url: write_path) do |f| %>
+          <div class="field half first">
+            <%= f.text_field :title, :placeholder => "Post Title" %>
+            </div>
+          <div class="field half">
+          <%= f.text_field :subtitle, :placeholder => "Post Subtitle" %>
+        </div>
+        <br /><br />
           <%= f.text_area :content, :class => "editor" %>
           <br />
           <div class="field half first">

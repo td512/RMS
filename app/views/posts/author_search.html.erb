@@ -31,7 +31,7 @@
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
-                  <li><a href="<%= category_path(post.post_category) %>"><%= post.post_category %></a></li>
+                  <li><% post.post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %></li>
                   <!--<li><a href="#" class="icon fa-heart">28</a></li>
                   <li><a href="#" class="icon fa-comment">128</a></li>-->
                 </ul>
