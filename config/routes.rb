@@ -43,9 +43,12 @@ end
 scope '/write' do
   get '/' => 'posts#write', as: :write
   post '/' => 'posts#post'
+  get '/edit/:id' => 'posts#edit', as: :edit
+  post '/edit/:id' => 'posts#update', as: :update
 end
 scope '/manage' do
   get '/' => 'posts#manage', as: :manage
+  get '/delete/:id' => 'posts#delete', as: :delete
 end
 # Posts
 scope '/posts' do

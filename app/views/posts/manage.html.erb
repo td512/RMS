@@ -1,0 +1,53 @@
+<%= content_for :dash, "1" %>
+<%= content_for :title, "Manage Your Posts" %>
+<!-- Wrapper -->
+  <div id="wrapper">
+    <%= render 'partials/dash_nav' %>
+
+    <!-- Main -->
+   <div id="main">
+     <div class="inner">
+       <header>
+         <h1>Manage Your Posts</h1>
+         <a href="<%= write_path %>"><%= submit_tag "Write", :class => "button special small" %></a>
+       </header>
+       <br />
+       <section>
+         <div class="table-wrapper">
+           <table class="alt">
+             <thead>
+               <tr>
+                 <th>Title</th>
+                 <th>Date Written</th>
+                 <th>Actions</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% Post.all.reverse_each do |post| %>
+               <tr>
+                 <th><%= post.post_title %></th>
+                 <th><%= post.created_at.strftime("%B %e, %Y") %></th>
+                 <th><%= link_to "Edit", edit_path(post.id)%> / <%= link_to "Remove", delete_path(post.id)%></th>
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
+         </div>
+         <!-- Scripts -->
+           <script>
+           <%= render 'phantom/jquery' %>
+           </script>
+           <script>
+           <%= render 'phantom/skel' %>
+           </script>
+           <script>
+           <%= render 'phantom/util' %>
+           </script>
+           <!--[if lte IE 8]>
+           <script>
+           <%= render 'phantom/respond' %>
+           </script>
+           <![endif]-->
+           <script>
+           <%= render 'phantom/main' %>
+           </script>

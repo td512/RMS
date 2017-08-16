@@ -12,7 +12,7 @@
         <%= render 'partials/blog_menu' %>
     <!-- Main -->
       <div id="main">
-          <% Post.order('id ASC').where("owner ~ ?", params[:q]).each do |post| %>
+          <% Post.order('id DESC').where("owner ~ ?", params[:q]).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>

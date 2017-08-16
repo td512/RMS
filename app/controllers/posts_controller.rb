@@ -1,12 +1,56 @@
 class PostsController < ApplicationController
+  before_action :require_user, except: [:details]
+  before_action :check_user, except: [:details]
+  before_action :check_admin, except: [:details]
+  before_action :check_activated, except: [:details]
+  def update
+    post = Post.find_by(id: params[:id])
+    if params[:write][:title].present?
+      post.post_title = params[:write][:title]
+    end
+    if params[:write][:subtitle].present?
+      post.post_subtitle = params[:write][:subtitle]
+    end
+    if params[:write][:content].present?
+      post.post_body = params[:write][:content]
+    end
+    if params[:write][:tags].present?
+      post.post_category = params[:write][:tags]
+    end
+    if params[:write][:title].present?
+      post.slug = params[:write][:title].parameterize
+    end
+    if post.save
+      redirect_to manage_path
+    end
+    end
+  def delete
+    post = Post.find_by(id: params[:id])
+    post.delete
+    redirect_to manage_path
+  end
   def post
     post = Post.new()
     post.owner = current_user.first_name
-    post.post_title = params[:write][:title]
-    post.post_subtitle = params[:write][:subtitle]
-    post.post_body = params[:write][:content]
-    post.post_category = params[:write][:tags]
-    post.slug = params[:write][:title].parameterize
+    if params[:write][:title].present?
+      post.post_title = params[:write][:title]
+    else
+      post.post_title = "I forgot the post title!"
+    end
+    if params[:write][:subtitle].present?
+      post.post_subtitle = params[:write][:subtitle]
+    end
+    if params[:write][:content].present?
+      post.post_body = params[:write][:content]
+    end
+    if params[:write][:tags].present?
+      post.post_category = params[:write][:tags]
+    end
+    if params[:write][:title].present?
+      post.slug = params[:write][:title].parameterize
+    else
+      post.slug = "forgot-the-title"
+    end
     if post.save
       redirect_to post_path(post.id, post.slug)
     end
