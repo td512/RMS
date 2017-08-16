@@ -27,7 +27,7 @@
                <tr>
                  <th><%= post.post_title %></th>
                  <th><%= post.created_at.strftime("%B %e, %Y") %></th>
-                 <th><%= link_to "Edit", edit_path(post.id)%> / <%= link_to "Remove", delete_path(post.id)%></th>
+                 <th><%= link_to "View", post_path(post.id, post.slug) %> / <%= link_to "Edit", edit_path(post.id)%> / <%= link_to "Remove", delete_path(post.id)%></th>
                </tr>
                <% end %>
              </tbody>

@@ -21,7 +21,7 @@
               </div>
               <div class="meta">
                 <time class="published" datetime="<%= Post.order('id DESC').limit(1).pluck(:created_at).first.strftime("%F") %>"><%= Post.order('id DESC').limit(1).pluck(:created_at).first.strftime("%B %e, %Y") %></time>
-                <a href="<%= asearch_path %>?q=<%=Post.order('id DESC').limit(1).pluck(:owner).first%>" class="author"><span class="name"><%= Post.order('id DESC').limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                <a href="<%= asearch_path %>?q=<%=Post.order('id DESC').limit(1).pluck(:owner).first%>" class="author"><span class="name"><%= Post.order('id DESC').limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
               </div>
             </header>
             <p><%= raw Post.order('id DESC').limit(1).pluck(:post_body).first.truncate_words(25) %></p>
@@ -30,13 +30,14 @@
                 <li><a href="<%= post_path(Post.order('id DESC').limit(1).pluck(:id).first, Post.order('id DESC').limit(1).pluck(:slug).first) %>" class="button big">Continue Reading</a></li>
               </ul>
               <ul class="stats">
-                <li><% Post.order('id DESC').limit(1).pluck(:post_category).first.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %></li>
+                <li><% if Post.order('id DESC').limit(1).pluck(:post_category).first.present?
+                  Post.order('id DESC').limit(1).pluck(:post_category).first.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
                 <!--<li><a href="#" class="icon fa-heart">28</a></li>
                 <li><a href="#" class="icon fa-comment">128</a></li>-->
               </ul>
             </footer>
           </article>
-          <% Post.all.offset(1).limit(3).reverse_each do |post| %>
+          <% Post.all.order("id DESC").limit(3).offset(1).each do |post| %>
           <!-- Post -->
             <article class="post">
               <header>
@@ -46,7 +47,7 @@
                 </div>
                 <div class="meta">
                   <time class="published" datetime="<%= post.created_at.strftime("%F") %>"><%= post.created_at.strftime("%B %e, %Y") %></time>
-                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="images/avatar.jpg" alt="" /></a>
+                  <a href="<%= asearch_path %>?q=<%=post.owner%>" class="author"><span class="name"><%= Post.limit(1).pluck(:owner).first %></span><img src="/images/avatar.jpg" alt="" /></a>
                 </div>
               </header>
               <p><%= raw post.post_body.truncate_words(25) %></p>
@@ -55,7 +56,8 @@
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>
                 </ul>
                 <ul class="stats">
-                  <li><% post.post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %></li>
+                  <li><% if post.post_category.present?
+                    post.post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
                   <!--<li><a href="#" class="icon fa-heart">28</a></li>
                   <li><a href="#" class="icon fa-comment">128</a></li>-->
                 </ul>

@@ -42,6 +42,8 @@ class PostsController < ApplicationController
     end
     if params[:write][:content].present?
       post.post_body = params[:write][:content]
+    else
+      post.post_body = "...and body content"
     end
     if params[:write][:tags].present?
       post.post_category = params[:write][:tags]
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
       post.slug = "forgot-the-title"
     end
     if post.save
-      redirect_to post_path(post.id, post.slug)
+      redirect_to manage_path
     end
   end
   def details
