@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/favicon.ico?v=3" />
     <% if content_for?(:stylesheet) %>
       <%= stylesheet_link_tag yield(:stylesheet), :media => "all" %>
     <% end %>
@@ -28,7 +29,7 @@
     <% if content_for?(:coming_soon) %>
     <%= render 'partials/comingsoon' %>
     <% end %>
-    <!-- Panther, Build 59. Render Time: <%= Time.now-@start_time %> seconds -->
+    <!-- Panther, Build 73. Render Time: <%= Time.now-@start_time %> seconds -->
   </head>
 
 <%if content_for?(:login) %><style> body {font-family: "helvetica neue", "helvetica", "arial", sans-serif;}</style><body class="login"><%end%>
