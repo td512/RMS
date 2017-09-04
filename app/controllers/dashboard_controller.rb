@@ -24,30 +24,33 @@ def apply
               if params[:settings][:blog_about].present?
                 settings.blog_about = params[:settings][:blog_about]
               end
-    if settings.save
-      redirect_to settings_path
-    end
-  end
-else
-  settings = Setting.first
-  if params[:settings][:blog_name].present?
-    settings.blog_name = params[:settings][:blog_name]
-  end
-    if params[:settings][:blog_email].present?
-      settings.blog_email = params[:settings][:blog_email]
-    end
-      if params[:settings][:blog_tagline].present?
-        settings.blog_tagline = params[:settings][:blog_tagline]
+              if params[:settings][:blog_appid].present?
+                settings.blog_appid = params[:settings][:blog_appid]
+              end
+    elsif ! Setting.first.nil?
+      settings = Setting.first
+      if params[:settings][:blog_name].present?
+        settings.blog_name = params[:settings][:blog_name]
       end
-        if params[:settings][:blog_twitter].present?
-          settings.blog_twitter = params[:settings][:blog_twitter]
+        if params[:settings][:blog_email].present?
+          settings.blog_email = params[:settings][:blog_email]
         end
-          if params[:settings][:blog_facebook].present?
-            settings.blog_facebook = params[:settings][:blog_facebook]
+          if params[:settings][:blog_tagline].present?
+            settings.blog_tagline = params[:settings][:blog_tagline]
           end
-            if params[:settings][:blog_about].present?
-              settings.blog_about = params[:settings][:blog_about]
+            if params[:settings][:blog_twitter].present?
+              settings.blog_twitter = params[:settings][:blog_twitter]
             end
+              if params[:settings][:blog_facebook].present?
+                settings.blog_facebook = params[:settings][:blog_facebook]
+              end
+              if params[:settings][:blog_about].present?
+                settings.blog_about = params[:settings][:blog_about]
+              end
+              if params[:settings][:blog_appid].present?
+                settings.blog_appid = params[:settings][:blog_appid]
+              end
+      end
     if settings.save
       redirect_to settings_path
     end

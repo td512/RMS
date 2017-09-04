@@ -71,6 +71,9 @@ class PostsController < ApplicationController
       if params[:slug] && params[:slug] != Post.find_by(id: params[:id]).slug
         redirect_to post_path(params[:id], Post.find_by(id: params[:id]).slug)
       end
+      post = Post.find_by(id: params[:id])
+      post.post_views = Post.find_by(id: params[:id]).post_views.to_i + 1
+      post.save
     end
   end
 end

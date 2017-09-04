@@ -7,6 +7,7 @@ class CreateSettings < ActiveRecord::Migration[5.0]
       t.string :blog_facebook
       t.string :blog_twitter
       t.string :blog_email
+      t.string :blog_appid
       t.timestamps
     end
   end
