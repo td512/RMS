@@ -32,7 +32,8 @@
                 <li><% if Post.find_by(id: params[:id]).post_category.present?
                   Post.find_by(id: params[:id]).post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
                 <li><a href="javascript:void(0)" class="icon fa-eye"><%= Post.find_by(id: params[:id]).post_views.to_i - 1  %></a></li>
-                <li><a href="#" class="icon fa-comment">{comments}</a></li><li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= request.url%>',}, function(response){});" class="icon fa-share">{shares}</a></li>
+                <li><a href="#" class="icon fa-comment">{comments}</a></li>
+                <li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= request.url%>',}, function(response){if(response && ! response.error_message){$.get('<%=share_path(:id)%>');}});" class="icon fa-share"><%= Post.find_by(id: params[:id]).post_shares.to_i  %></a></li>
               </ul>
             </footer>
           </article>

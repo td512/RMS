@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
-  before_action :require_user, except: [:details, :new, :author_search, :categories]
-  before_action :check_user, except: [:details, :new, :author_search, :categories]
-  before_action :check_admin, except: [:details, :new, :author_search, :categories]
-  before_action :check_activated, except: [:details, :new, :author_search, :categories]
+  before_action :require_user, except: [:details, :new, :author_search, :categories, :share]
+  before_action :check_user, except: [:details, :new, :author_search, :categories, :share]
+  before_action :check_admin, except: [:details, :new, :author_search, :categories, :share]
+  before_action :check_activated, except: [:details, :new, :author_search, :categories, :share]
+  def share
+    post = Post.find_by(id: params[:id])
+    post.post_shares = post.post_shares.to_i + 1
+    post.save
+  end
   def update
     post = Post.find_by(id: params[:id])
     if params[:write][:title].present?

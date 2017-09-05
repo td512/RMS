@@ -53,6 +53,7 @@ end
 # Posts
 scope '/posts' do
   get '/:id' => 'posts#details'
+  get '/:id/share' => 'posts#share', as: :share
   get '/:id/:slug' => 'posts#details', as: :post
 end
 get '/category/:id' => 'posts#categories', as: :category
