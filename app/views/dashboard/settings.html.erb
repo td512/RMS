@@ -64,21 +64,21 @@
 									</div>
                   <div class="field half">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_logo).first.nil?  %>
-                    <%= f.text_field :blog_logo, :placeholder => "Logo Image" %>
+                    <%= f.text_field :blog_logo, :placeholder => "New Logo Image" %>
                     <% else %>
 										<%= f.text_field :blog_logo, :placeholder => Setting.limit(1).pluck(:blog_logo).first %>
                     <% end %>
 									</div>
                   <div class="field">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css).first.nil? %>
-                    <%= f.text_field :blog_css, :placeholder => "Override CSS" %>
+                    <%= f.text_field :blog_css, :placeholder => "Override Blog CSS" %>
                     <% else %>
 										<%= f.text_field :blog_css, :placeholder => Setting.limit(1).pluck(:blog_css).first %>
                     <% end %>
 									</div>
                   <div class="field">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css).first.nil? %>
-                    <%= f.text_field :dash_css, :placeholder => "Override CSS" %>
+                    <%= f.text_field :dash_css, :placeholder => "Override Dashboard CSS" %>
                     <% else %>
 										<%= f.text_field :dash_css, :placeholder => Setting.limit(1).pluck(:dash_css).first %>
                     <% end %>
