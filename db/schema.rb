@@ -52,7 +52,9 @@ ActiveRecord::Schema.define(version: 20170818053911) do
     t.string   "blog_twitter"
     t.string   "blog_email"
     t.string   "blog_appid"
+    t.string   "blog_logo"
     t.string   "blog_css"
+    t.string   "dash_css"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

@@ -30,6 +30,12 @@ def apply
               if params[:settings][:blog_css].present?
                 settings.blog_css = params[:settings][:blog_css]
               end
+              if params[:settings][:dash_css].present?
+                settings.dash_css = params[:settings][:dash_css]
+              end
+              if params[:settings][:blog_logo].present?
+                settings.blog_logo = params[:settings][:blog_logo]
+              end
     elsif ! Setting.first.nil?
       settings = Setting.first
       if params[:settings][:blog_name].present?
@@ -55,6 +61,12 @@ def apply
               end
               if params[:settings][:blog_css].present?
                 settings.blog_css = params[:settings][:blog_css]
+              end
+              if params[:settings][:dash_css].present?
+                settings.dash_css = params[:settings][:dash_css]
+              end
+              if params[:settings][:blog_logo].present?
+                settings.blog_logo = params[:settings][:blog_logo]
               end
       end
     if settings.save
