@@ -29,7 +29,15 @@
     <% if content_for?(:coming_soon) %>
     <%= render 'partials/comingsoon' %>
     <% end %>
-    <!-- Panther, Build 73. Render Time: <%= Time.now-@start_time %> seconds -->
+    <% if ! content_for?(:coming_soon) && ! content_for(:dash) %>
+      <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css).first.nil? %>
+      <% else %>
+        <style>
+        <%= Setting.limit(1).pluck(:blog_css).first %>
+        </style>
+      <% end %>
+    <% end %>
+    <!-- Panther, Build 144. Render Time: <%= Time.now-@start_time %> seconds -->
     <script>
     window.fbAsyncInit = function() {
   FB.init({

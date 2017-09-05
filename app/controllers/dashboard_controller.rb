@@ -27,6 +27,9 @@ def apply
               if params[:settings][:blog_appid].present?
                 settings.blog_appid = params[:settings][:blog_appid]
               end
+              if params[:settings][:blog_css].present?
+                settings.blog_css = params[:settings][:blog_css]
+              end
     elsif ! Setting.first.nil?
       settings = Setting.first
       if params[:settings][:blog_name].present?
@@ -49,6 +52,9 @@ def apply
               end
               if params[:settings][:blog_appid].present?
                 settings.blog_appid = params[:settings][:blog_appid]
+              end
+              if params[:settings][:blog_css].present?
+                settings.blog_css = params[:settings][:blog_css]
               end
       end
     if settings.save

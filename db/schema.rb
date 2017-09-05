@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20170818053911) do
     t.string   "post_body"
     t.string   "post_category"
     t.string   "post_shares"
-    t.string   "post_comments"
     t.string   "post_views"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 20170818053911) do
     t.string   "blog_twitter"
     t.string   "blog_email"
     t.string   "blog_appid"
+    t.string   "blog_css"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
