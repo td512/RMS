@@ -37,6 +37,14 @@
         </style>
       <% end %>
     <% end %>
+    <% if ! content_for?(:coming_soon) && ! content_for(:blog) %>
+      <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css).first.nil? %>
+      <% else %>
+        <style>
+        <%= Setting.limit(1).pluck(:dash_css).first %>
+        </style>
+      <% end %>
+    <% end %>
     <!-- Panther, Build 144. Render Time: <%= Time.now-@start_time %> seconds -->
     <script>
     window.fbAsyncInit = function() {
