@@ -58,6 +58,26 @@ def apply
               else
                 settings.blog_css_button = '#5DBEB3'
               end
+              if params[:settings][:dash_css_bg].present?
+                settings.dash_css_bg = params[:settings][:dash_css_bg]
+              else
+                settings.dash_css_bg = '#FFF'
+              end
+              if params[:settings][:dash_css_tc].present?
+                settings.dash_css_tc = params[:settings][:dash_css_tc]
+              else
+                settings.dash_css_tc = '#000'
+              end
+              if params[:settings][:dash_css_mtc].present?
+                settings.dash_css_mtc = params[:settings][:dash_css_mtc]
+              else
+                settings.dash_css_mtc = '#fff'
+              end
+              if params[:settings][:dash_css_highlight].present?
+                settings.dash_css_highlight = params[:settings][:dash_css_highlight]
+              else
+                settings.dash_css_highlight = '#F2849E'
+              end
     elsif ! Setting.first.nil?
       settings = Setting.first
       if params[:settings][:blog_name].present?
@@ -98,6 +118,18 @@ def apply
               end
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]
+              end
+              if params[:settings][:dash_css_bg].present?
+                settings.dash_css_bg = params[:settings][:dash_css_bg]
+              end
+              if params[:settings][:dash_css_tc].present?
+                settings.dash_css_tc = params[:settings][:dash_css_tc]
+              end
+              if params[:settings][:dash_css_mtc].present?
+                settings.dash_css_mtc = params[:settings][:dash_css_mtc]
+              end
+              if params[:settings][:dash_css_highlight].present?
+                settings.dash_css_highlight = params[:settings][:dash_css_highlight]
               end
       end
     if settings.save

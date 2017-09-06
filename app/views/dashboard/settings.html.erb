@@ -104,6 +104,34 @@
 										Blog button color: <br><%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_button).first %>
                     <% end %>
 									</div>
+                  <div class="field quarter first">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_bg).first.nil? %>
+                    <%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Background Color" %>
+                    <% else %>
+										Dash background color: <br><%= f.text_field :dash_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_bg).first %>
+                    <% end %>
+									</div>
+                  <div class="field quarter">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_tc).first.nil? %>
+                    <%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Text Color" %>
+                    <% else %>
+										Dash text color: <br><%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_tc).first %>
+                    <% end %>
+									</div>
+                  <div class="field quarter second">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_highlight).first.nil? %>
+                    <%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Highlight Color" %>
+                    <% else %>
+										Dash highlight color: <br><%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_highlight).first %>
+                    <% end %>
+									</div>
+                  <div class="field quarter third">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_mtc).first.nil? %>
+                    <%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Menu Text Color" %>
+                    <% else %>
+										Dash menu text color: <br><%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_mtc).first %>
+                    <% end %>
+									</div>
 									<ul class="actions">
 										<li><%= f.submit "Update", :class => "special" %></li>
 									</ul>
