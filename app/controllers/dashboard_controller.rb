@@ -58,6 +58,11 @@ def apply
               else
                 settings.blog_css_button = '#5DBEB3'
               end
+              if params[:settings][:blog_css_highlight].present?
+                settings.blog_css_highlight = params[:settings][:blog_css_highlight]
+              else
+                settings.blog_css_highlight = '#FFF'
+              end
               if params[:settings][:dash_css_bg].present?
                 settings.dash_css_bg = params[:settings][:dash_css_bg]
               else
@@ -115,6 +120,9 @@ def apply
               end
               if params[:settings][:blog_css_header].present?
                 settings.blog_css_header = params[:settings][:blog_css_header]
+              end
+              if params[:settings][:blog_css_highlight].present?
+                settings.blog_css_highlight = params[:settings][:blog_css_highlight]
               end
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]

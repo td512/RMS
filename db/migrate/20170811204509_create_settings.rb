@@ -14,6 +14,7 @@ class CreateSettings < ActiveRecord::Migration[5.0]
       t.string :blog_css_post
       t.string :blog_css_button
       t.string :blog_css_header
+      t.string :blog_css_highlight
       t.string :dash_css_bg
       t.string :dash_css_tc
       t.string :dash_css_mtc
