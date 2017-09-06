@@ -61,7 +61,7 @@ def apply
               if params[:settings][:blog_css_highlight].present?
                 settings.blog_css_highlight = params[:settings][:blog_css_highlight]
               else
-                settings.blog_css_highlight = '#FFF'
+                settings.blog_css_highlight = '#2EBAAE'
               end
               if params[:settings][:dash_css_bg].present?
                 settings.dash_css_bg = params[:settings][:dash_css_bg]

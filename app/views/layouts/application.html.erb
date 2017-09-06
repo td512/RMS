@@ -31,7 +31,7 @@
     <% end %>
     <% if ! content_for?(:coming_soon) && ! content_for(:dash) %>
     <style>
-    body{background: <%= Setting.limit(1).pluck(:blog_css_bg).first %> !important;}#header,#menu{background: <%= Setting.limit(1).pluck(:blog_css_header).first %> !important;}*{color: <%= Setting.limit(1).pluck(:blog_css_tc).first %> !important;}.post{background: <%= Setting.limit(1).pluck(:blog_css_post).first %> !important;}.button{color: <%= Setting.limit(1).pluck(:blog_css_button).first %> !important;}
+    body{background: <%= Setting.limit(1).pluck(:blog_css_bg).first %> !important;}#header,#menu{background: <%= Setting.limit(1).pluck(:blog_css_header).first %> !important;}*{color: <%= Setting.limit(1).pluck(:blog_css_tc).first %> !important;}.post{background: <%= Setting.limit(1).pluck(:blog_css_post).first %> !important;}.button{color: <%= Setting.limit(1).pluck(:blog_css_button).first %> !important;}a:hover{color: <%= Setting.limit(1).pluck(:blog_css_highlight).first %> !important}
     </style>
     <% end %>
     <% if ! content_for?(:coming_soon) && ! content_for(:blog) %>
