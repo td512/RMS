@@ -32,9 +32,10 @@
                 </ul>
                 <ul class="stats">
                   <li><% if post.post_category.present?
-                    post.post_category.split(',').each do |c| %><a href="<%= category_path(c) %>"><%= c %></a><% end %><% end %></li>
-                  <!--<li><a href="#" class="icon fa-heart">28</a></li>
-                  <li><a href="#" class="icon fa-comment">128</a></li>-->
+                    post.post_category.split(',').each do |c| %><a href="<%= category_path(c.strip) %>"><%= c %></a> <% end %><% end %></li>
+                    <li><a href="javascript:void(0)" class="icon fa-eye"><%= post.post_views.to_i - 1  %></a></li>
+                    <li><a href="#" class="icon fa-comment">{comments}</a></li>
+                    <li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= post_url(post.id, post.slug) %>',}, function(response){if(response && ! response.error_message){$.get('<%=share_path(post.id)%>');}});" class="icon fa-share"><%= post.post_shares.to_i  %></a></li>
                 </ul>
               </footer>
             </article>
