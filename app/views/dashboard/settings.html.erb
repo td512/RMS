@@ -71,72 +71,72 @@
 									</div>
                   <div class="field sixth first">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_bg).first.nil? %>
-                    <%= f.text_field :blog_css_bg, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Background Color" %>
+                    <%= f.text_field :blog_css_bg, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Background" %>
                     <% else %>
-										Blog body color: <br><%= f.text_field :blog_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_bg).first %>
+										Blog body: <br><%= f.text_field :blog_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_bg).first %>
                     <% end %>
 									</div>
                   <div class="field sixth">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_header).first.nil? %>
-                    <%= f.text_field :blog_css_header, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Header Color"  %>
+                    <%= f.text_field :blog_css_header, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Header"  %>
                     <% else %>
-										Blog header color: <br><%= f.text_field :blog_css_header, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_header).first  %>
+										Blog header: <br><%= f.text_field :blog_css_header, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_header).first  %>
                     <% end %>
 									</div>
                   <div class="field sixth second">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_tc).first.nil? %>
-                    <%= f.text_field :blog_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Text Color"  %>
+                    <%= f.text_field :blog_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Text"  %>
                     <% else %>
-										Blog text color: <br><%= f.text_field :blog_css_tc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_tc).first  %>
+										Blog text: <br><%= f.text_field :blog_css_tc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_tc).first  %>
                     <% end %>
 									</div>
                   <div class="field sixth third">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_post).first.nil? %>
-                    <%= f.text_field :blog_css_post, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Post Color" %>
+                    <%= f.text_field :blog_css_post, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Post" %>
                     <% else %>
-										Blog post color: <br><%= f.text_field :blog_css_post, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_post).first %>
+										Blog post: <br><%= f.text_field :blog_css_post, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_post).first %>
                     <% end %>
 									</div>
                   <div class="field sixth forth">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_button).first.nil? %>
-                    <%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Button Color" %>
+                    <%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Button" %>
                     <% else %>
-										Blog button color: <br><%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_button).first %>
+										Blog button: <br><%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_button).first %>
                     <% end %>
 									</div>
                   <div class="field sixth fifth">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css_highlight).first.nil? %>
-                    <%= f.text_field :blog_css_highlight, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Highlight Color" %>
+                    <%= f.text_field :blog_css_highlight, :class => 'jscolor {hash:true, required:false}', :placeholder => "Blog Highlight" %>
                     <% else %>
-										Blog highlight color: <br><%= f.text_field :blog_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_highlight).first %>
+										Blog highlight: <br><%= f.text_field :blog_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:blog_css_highlight).first %>
                     <% end %>
 									</div>
                   <div class="field quarter first">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_bg).first.nil? %>
-                    <%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Background Color" %>
+                    <%= f.text_field :blog_css_button, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Background" %>
                     <% else %>
-										Dash background color: <br><%= f.text_field :dash_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_bg).first %>
+										Dash background: <br><%= f.text_field :dash_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_bg).first %>
                     <% end %>
 									</div>
                   <div class="field quarter">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_tc).first.nil? %>
-                    <%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Text Color" %>
+                    <%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Text" %>
                     <% else %>
-										Dash text color: <br><%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_tc).first %>
+										Dash text: <br><%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_tc).first %>
                     <% end %>
 									</div>
                   <div class="field quarter second">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_highlight).first.nil? %>
-                    <%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Highlight Color" %>
+                    <%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Highlight" %>
                     <% else %>
-										Dash highlight color: <br><%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_highlight).first %>
+										Dash highlight: <br><%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_highlight).first %>
                     <% end %>
 									</div>
                   <div class="field quarter third">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_mtc).first.nil? %>
-                    <%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Menu Text Color" %>
+                    <%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Menu Text" %>
                     <% else %>
-										Dash menu text color: <br><%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_mtc).first %>
+										Dash menu text: <br><%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_mtc).first %>
                     <% end %>
 									</div>
 									<ul class="actions">

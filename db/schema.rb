@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20170818053911) do
     t.string   "blog_css_post"
     t.string   "blog_css_button"
     t.string   "blog_css_header"
+    t.string   "blog_css_highlight"
     t.string   "dash_css_bg"
     t.string   "dash_css_tc"
     t.string   "dash_css_mtc"
