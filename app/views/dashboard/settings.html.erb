@@ -12,7 +12,7 @@
             <h1><span id="user">Site Settings</h1>
           </header>
           <section>
-								<%= form_for(:settings, url: settings_path) do |f| %>
+								<%= form_for(:settings, url: addmenu_path) do |f| %>
 									<div class="field half first">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_name).first.nil?  %>
                     <%= f.text_field :blog_name, :placeholder => "Blog Name" %>

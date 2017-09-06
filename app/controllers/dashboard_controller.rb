@@ -3,6 +3,20 @@ before_action :require_user
 before_action :check_user
 before_action :check_admin
 before_action :check_activated
+def delmenu
+  menu = Menu.find_by(id: params[:id])
+  menu.delete
+  redirect_to menu_path
+end
+def menuadd
+  menu = Menu.new()
+  menu.title = params[:menu][:title]
+  menu.subtitle = params[:menu][:subtitle]
+  menu.url = params[:menu][:url]
+  if menu.save
+    redirect_to menu_path
+  end
+end
 def apply
   if Setting.first.nil?
     settings = Setting.new()

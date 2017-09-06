@@ -11,12 +11,13 @@
     <!-- Links -->
       <section>
         <ul class="links">
-<!--              <li>
-            <a href="#">
-              <h3>Etiam sed consequat</h3>
-              <p>Porta lectus amet ultricies</p>
+          <% Menu.all.each do |m| %>
+          <li>
+            <a href="<%= m.url %>">
+              <h3><%= m.title %></h3>
+              <p><%= m.subtitle %></p>
             </a>
-          </li>-->
+          </li><% end %>
         </ul>
       </section>
 

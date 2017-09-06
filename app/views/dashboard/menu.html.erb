@@ -9,7 +9,7 @@
      <div class="inner">
        <header>
          <h1>Manage Your Posts</h1>
-         <a href="<%= write_path %>"><%= submit_tag "Write", :class => "button special small" %></a>
+         <a href="<%= addmenu_path %>"><%= submit_tag "Add", :class => "button special small" %></a>
        </header>
        <br />
        <section>
@@ -18,18 +18,16 @@
              <thead>
                <tr>
                  <th>Title</th>
-                 <th>Date Written</th>
-                 <th>Quick Analytics</th>
+                 <th>URL</th>
                  <th>Actions</th>
                </tr>
              </thead>
              <tbody>
-               <% Post.all.reverse_each do |post| %>
+               <% Menu.all.each do |m| %>
                <tr>
-                 <th><%= post.post_title %></th>
-                 <th><%= post.created_at.strftime("%B %e, %Y") %></th>
-                 <th><a href="javascript:void(0)" class="icon fa-eye"> <%= post.post_views.to_i  %></a>,&nbsp;&nbsp; <a href="#" class="icon fa-comment"> {comments}</a>,&nbsp;&nbsp; <a href="javascript:void(0)" class="icon fa-share"> <%= post.post_shares.to_i  %></a></th>
-                 <th><%= link_to "View", post_path(post.id, post.slug) %> / <%= link_to "Edit", edit_path(post.id)%> / <%= link_to "Remove", delete_path(post.id)%></th>
+                 <th><%= m.title %></th>
+                 <th><%= m.url %></th>
+                 <th><%= link_to "Remove", menudelete_path(m.id)%></th>
                </tr>
                <% end %>
              </tbody>

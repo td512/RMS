@@ -3,6 +3,7 @@ class CreateMenus < ActiveRecord::Migration[5.0]
     create_table :menus do |t|
       t.string :title
       t.string :url
+      t.string :subtitle
       t.timestamps
     end
   end

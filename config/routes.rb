@@ -48,6 +48,12 @@ scope '/write' do
 end
 scope '/manage' do
   get '/' => 'posts#manage', as: :manage
+  scope '/menus' do
+    get '/' => 'dashboard#menu', as: :menu
+    get '/add' => 'dashboard#addmenu', as: :addmenu
+    post '/add' => 'dashboard#menuadd'
+    get '/delete/:id' => 'dashboard#delmenu', as: :menudelete
+  end
   get '/delete/:id' => 'posts#delete', as: :delete
 end
 # Posts
