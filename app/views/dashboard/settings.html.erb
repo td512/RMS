@@ -118,7 +118,7 @@
 										Dash background: <br><%= f.text_field :dash_css_bg, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_bg).first %>
                     <% end %>
 									</div>
-                  <div class="field quarter">
+                  <div class="field quarter special-nocolor">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_tc).first.nil? %>
                     <%= f.text_field :dash_css_tc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Text" %>
                     <% else %>
@@ -132,7 +132,7 @@
 										Dash highlight: <br><%= f.text_field :dash_css_highlight, :class => 'jscolor {hash:true, required:false}', :value => Setting.limit(1).pluck(:dash_css_highlight).first %>
                     <% end %>
 									</div>
-                  <div class="field quarter third">
+                  <div class="field quarter third special-nocolor">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css_mtc).first.nil? %>
                     <%= f.text_field :dash_css_mtc, :class => 'jscolor {hash:true, required:false}', :placeholder => "Dash Menu Text" %>
                     <% else %>

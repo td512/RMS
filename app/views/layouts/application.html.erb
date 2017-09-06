@@ -36,10 +36,10 @@
     <% end %>
     <% if ! content_for?(:coming_soon) && ! content_for(:blog) %>
     <style>
-    body{background: <%= Setting.limit(1).pluck(:dash_css_bg).first %> !important;}a:hover{color: <%= Setting.limit(1).pluck(:dash_css_highlight).first %> !important;}:not(.sixth.second,.quarter,#menu){color: <%= Setting.limit(1).pluck(:dash_css_tc).first %> !important;}#menu{color: <%= Setting.limit(1).pluck(:dash_css_mtc).first %> !important;}
+    body{background: <%= Setting.limit(1).pluck(:dash_css_bg).first %> !important;}a:hover{color: <%= Setting.limit(1).pluck(:dash_css_highlight).first %> !important;}body:not(#menu){color: <%= Setting.limit(1).pluck(:dash_css_tc).first %> !important;}#menu{color: <%= Setting.limit(1).pluck(:dash_css_mtc).first %> !important;}
     </style>
     <% end %>
-    <!-- Panther, Build 144. Render Time: <%= Time.now-@start_time %> seconds -->
+    <!-- Panther, Build 167. Render Time: <%= Time.now-@start_time %> seconds -->
     <script>
     window.fbAsyncInit = function() {
   FB.init({
