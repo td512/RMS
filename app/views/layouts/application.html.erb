@@ -30,20 +30,9 @@
     <%= render 'partials/comingsoon' %>
     <% end %>
     <% if ! content_for?(:coming_soon) && ! content_for(:dash) %>
-      <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_css).first.nil? %>
-      <% else %>
-        <style>
-        <%= Setting.limit(1).pluck(:blog_css).first %>
-        </style>
-      <% end %>
-    <% end %>
-    <% if ! content_for?(:coming_soon) && ! content_for(:blog) %>
-      <% if Setting.first.nil? || Setting.limit(1).pluck(:dash_css).first.nil? %>
-      <% else %>
-        <style>
-        <%= Setting.limit(1).pluck(:dash_css).first %>
-        </style>
-      <% end %>
+    <style>
+    body{background: <%= Setting.limit(1).pluck(:blog_css_bg).first %> !important;}#header,#menu{background: <%= Setting.limit(1).pluck(:blog_css_header).first %> !important;}*{color: <%= Setting.limit(1).pluck(:blog_css_tc).first %> !important;}.post{background: <%= Setting.limit(1).pluck(:blog_css_post).first %> !important;}.button{color: <%= Setting.limit(1).pluck(:blog_css_button).first %> !important;}
+    </style>
     <% end %>
     <!-- Panther, Build 144. Render Time: <%= Time.now-@start_time %> seconds -->
     <script>

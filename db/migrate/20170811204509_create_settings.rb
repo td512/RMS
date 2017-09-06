@@ -9,7 +9,11 @@ class CreateSettings < ActiveRecord::Migration[5.0]
       t.string :blog_email
       t.string :blog_appid
       t.string :blog_logo
-      t.string :blog_css
+      t.string :blog_css_bg
+      t.string :blog_css_tc
+      t.string :blog_css_post
+      t.string :blog_css_button
+      t.string :blog_css_header
       t.string :dash_css
       t.timestamps
     end

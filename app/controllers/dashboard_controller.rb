@@ -30,11 +30,33 @@ def apply
               if params[:settings][:blog_css].present?
                 settings.blog_css = params[:settings][:blog_css]
               end
-              if params[:settings][:dash_css].present?
-                settings.dash_css = params[:settings][:dash_css]
-              end
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]
+              end
+              if params[:settings][:blog_css_bg].present?
+                settings.blog_css_bg = params[:settings][:blog_css_bg]
+              else
+                settings.blog_css_bg = '#F4F4F4'
+              end
+              if params[:settings][:blog_css_header].present?
+                settings.blog_css_header = params[:settings][:blog_css_header]
+              else
+                settings.blog_css_header = '#FFF'
+              end
+              if params[:settings][:blog_css_tc].present?
+                settings.blog_css_tc = params[:settings][:blog_css_tc]
+              else
+                settings.blog_css_tc = '#000'
+              end
+              if params[:settings][:blog_css_post].present?
+                settings.blog_css_post = params[:settings][:blog_css_post]
+              else
+                settings.blog_css_post = '#FFF'
+              end
+              if params[:settings][:blog_css_button].present?
+                settings.blog_css_button = params[:settings][:blog_css_button]
+              else
+                settings.blog_css_button = '#5DBEB3'
               end
     elsif ! Setting.first.nil?
       settings = Setting.first
@@ -59,11 +81,20 @@ def apply
               if params[:settings][:blog_appid].present?
                 settings.blog_appid = params[:settings][:blog_appid]
               end
-              if params[:settings][:blog_css].present?
-                settings.blog_css = params[:settings][:blog_css]
+              if params[:settings][:blog_css_bg].present?
+                settings.blog_css_bg = params[:settings][:blog_css_bg]
               end
-              if params[:settings][:dash_css].present?
-                settings.dash_css = params[:settings][:dash_css]
+              if params[:settings][:blog_css_tc].present?
+                settings.blog_css_tc = params[:settings][:blog_css_tc]
+              end
+              if params[:settings][:blog_css_post].present?
+                settings.blog_css_post = params[:settings][:blog_css_post]
+              end
+              if params[:settings][:blog_css_button].present?
+                settings.blog_css_button = params[:settings][:blog_css_button]
+              end
+              if params[:settings][:blog_css_header].present?
+                settings.blog_css_header = params[:settings][:blog_css_header]
               end
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]

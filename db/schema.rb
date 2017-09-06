@@ -53,10 +53,14 @@ ActiveRecord::Schema.define(version: 20170818053911) do
     t.string   "blog_email"
     t.string   "blog_appid"
     t.string   "blog_logo"
-    t.string   "blog_css"
+    t.string   "blog_css_bg"
+    t.string   "blog_css_tc"
+    t.string   "blog_css_post"
+    t.string   "blog_css_button"
+    t.string   "blog_css_header"
     t.string   "dash_css"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: :cascade do |t|
