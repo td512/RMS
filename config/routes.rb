@@ -37,7 +37,6 @@ end
 # Settings
 scope '/settings' do
   get '/' => 'dashboard#settings', as: :settings
-  get '/pick' => 'dashboard#settings_chooser', as: :chooser
   post '/' => 'dashboard#apply'
 end
 # Write
