@@ -65,6 +65,7 @@ scope '/manage' do
 end
 # Posts
 scope '/posts' do
+  get '/', to: redirect('/')
   get '/:id' => 'posts#details'
   get '/:id/share' => 'posts#share', as: :share
   get '/:id/:slug' => 'posts#details', as: :post
@@ -73,5 +74,4 @@ get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search
 get '/author-posts/:q' => 'posts#author_search', as: :asearch
 get '/dash' => 'dashboard#new', as: :dash
-get '/soon' => 'posts#mock'
 end
