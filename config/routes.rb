@@ -37,6 +37,7 @@ end
 # Settings
 scope '/settings' do
   get '/' => 'dashboard#settings', as: :settings
+  get '/pick' => 'dashboard#settings_chooser', as: :chooser
   post '/' => 'dashboard#apply'
 end
 # Write
@@ -48,6 +49,12 @@ scope '/write' do
 end
 scope '/manage' do
   get '/' => 'posts#manage', as: :manage
+  scope '/links' do
+    get '/' => 'dashboard#link', as: :link
+    get '/add' => 'dashboard#addlink', as: :addlink
+    post '/add' => 'dashboard#linkadd'
+    get '/delete/:id' => 'dashboard#dellink', as: :linkdelete
+  end
   scope '/menus' do
     get '/' => 'dashboard#menu', as: :menu
     get '/add' => 'dashboard#addmenu', as: :addmenu

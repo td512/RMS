@@ -3,6 +3,9 @@
     <h1><a href="<%= root_path %>"><%= Setting.limit(1).pluck(:blog_name).first %></a></h1>
     <nav class="links">
       <ul>
+        <% Link.all.each do |l| %>
+        <li><a href="<%= l.url %>"><%= l.title %></a></li>
+        <% end %>
       </ul>
     </nav>
     <nav class="main">

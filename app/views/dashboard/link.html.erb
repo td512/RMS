@@ -8,8 +8,8 @@
    <div id="main">
      <div class="inner">
        <header>
-         <h1>Manage Your Menu Links</h1>
-         <a href="<%= addmenu_path %>"><%= submit_tag "Add", :class => "button special small" %></a>
+         <h1>Manage Your Header Links</h1>
+         <a href="<%= addlink_path %>"><%= submit_tag "Add", :class => "button special small" %></a>
        </header>
        <br />
        <section>
@@ -18,18 +18,16 @@
              <thead>
                <tr>
                  <th>Title</th>
-                 <th>Subtitle</th>
                  <th>URL</th>
                  <th>Actions</th>
                </tr>
              </thead>
              <tbody>
-               <% Menu.all.each do |m| %>
+               <% Link.all.each do |l| %>
                <tr>
-                 <th><%= m.title %></th>
-                 <th><%= m.subtitle %></th>
-                 <th><%= m.url %></th>
-                 <th><%= link_to "Remove", menudelete_path(m.id)%></th>
+                 <th><%= l.title %></th>
+                 <th><%= l.url %></th>
+                 <th><%= link_to "Remove", linkdelete_path(l.id)%></th>
                </tr>
                <% end %>
              </tbody>

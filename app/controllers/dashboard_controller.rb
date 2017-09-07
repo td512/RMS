@@ -3,6 +3,19 @@ before_action :require_user
 before_action :check_user
 before_action :check_admin
 before_action :check_activated
+def dellink
+  link = Link.find_by(id: params[:id])
+  link.delete
+  redirect_to link_path
+end
+def linkadd
+  link = Link.new()
+  link.title = params[:link][:title]
+  link.url = params[:link][:url]
+  if link.save
+    redirect_to link_path
+  end
+end
 def delmenu
   menu = Menu.find_by(id: params[:id])
   menu.delete
