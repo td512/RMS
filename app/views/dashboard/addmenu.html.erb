@@ -11,7 +11,7 @@
           <header>
             <h1>Adding a menu option is as simple as 1, 2, 3!</h1>
           </header>
-          <%= form_for(:menu, url: addmenu_path) do |f| %>
+          <%= form_for(:profile, url: addmenu_path) do |f| %>
           <div class="field half first">
             <%= f.text_field :title, :placeholder => "Menu Title" %>
             </div>
@@ -30,4 +30,3 @@
       </div>
     </div>
     <%= render "partials/dash_scripts" %>
-    

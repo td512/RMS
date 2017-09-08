@@ -13,26 +13,24 @@
             <p>Time to update your details?</p>
           </header>
           <section>
-								<form action="javascript:void(0);">
+								<%= form_for(:profile, url: account_path) do |f| %>
 									<div class="field half first">
-                    <%= text_field_tag :first_name, "", :placeholder => current_user.first_name %>
+                    <%= f.text_field :first_name, :placeholder => current_user.first_name %>
 									</div>
 									<div class="field half">
-										<%= text_field_tag :last_name, "", :placeholder => current_user.last_name %>
+										<%= f.text_field :last_name, :placeholder => current_user.last_name %>
 									</div>
                   <div class="field half first">
-										<%= text_field_tag :email, "", :placeholder => current_user.email %>
+										<%= f.text_field :email, :placeholder => current_user.email %>
 									</div>
                   <div class="field half">
-										<%= password_field_tag :password, "", :placeholder => "New Password" %>
-									</div>
-                  <div class="half" id="status">
-
+										<%= f.password_field :password, :placeholder => "New Password" %>
 									</div>
 									<ul class="actions">
-										<li><input type="submit" value="Update" class="special" /></li>
+										<%= f.submit "Update", :class => "special" %>
 									</ul>
-								</form>
+								<% end %>
+
 							</section>
 
         </div>
