@@ -155,7 +155,7 @@ Finally, browse to your server's IP on port 3000
 ![Visiting your site](https://user-images.githubusercontent.com/9508934/30198237-c362f460-94c0-11e7-9a11-bda19d955643.png)
 _Visiting your site_
 
-Finally, create an account, by browsing to `<server-ip>:3000/signup`.
+And create an account, by browsing to `<server-ip>:3000/signup`.
 ![Creating an account](https://user-images.githubusercontent.com/9508934/30198333-3f695860-94c1-11e7-965b-d78d424e3501.png)
 _Creating an account_
 
