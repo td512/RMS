@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def emlerr
     @user = User.new
   end
-
 def create
   @user = User.new(user_params)
   if User.exists?(:email => @user.email)

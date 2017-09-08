@@ -29,17 +29,17 @@
     <% if content_for?(:coming_soon) %>
     <%= render 'partials/comingsoon' %>
     <% end %>
-    <% if ! content_for?(:coming_soon) && ! content_for(:dash) %>
+    <% if ! content_for?(:coming_soon) && ! content_for(:dash) && ! content_for(:login)  %>
     <style>
     body{background: <%= Setting.limit(1).pluck(:blog_css_bg).first %> !important;}#header,#menu{background: <%= Setting.limit(1).pluck(:blog_css_header).first %> !important;}*{color: <%= Setting.limit(1).pluck(:blog_css_tc).first %> !important;}.post{background: <%= Setting.limit(1).pluck(:blog_css_post).first %> !important;}.button{color: <%= Setting.limit(1).pluck(:blog_css_button).first %> !important;}a:hover{color: <%= Setting.limit(1).pluck(:blog_css_highlight).first %> !important}
     </style>
     <% end %>
-    <% if ! content_for?(:coming_soon) && ! content_for(:blog) %>
+    <% if ! content_for?(:coming_soon) && ! content_for(:blog) && ! content_for(:login) %>
     <style>
     body{background: <%= Setting.limit(1).pluck(:dash_css_bg).first %> !important;}a:hover{color: <%= Setting.limit(1).pluck(:dash_css_highlight).first %> !important;}body:not(#menu){color: <%= Setting.limit(1).pluck(:dash_css_tc).first %> !important;}#menu{color: <%= Setting.limit(1).pluck(:dash_css_mtc).first %> !important;}
     </style>
     <% end %>
-    <!-- Panther, Build 538. Render Time: <%= Time.now-@start_time %> seconds -->
+    <!-- Panther, Build 544. Render Time: <%= Time.now-@start_time %> seconds -->
     <script>
     window.fbAsyncInit = function() {
   FB.init({

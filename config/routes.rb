@@ -73,4 +73,8 @@ get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search
 get '/author-posts/:q' => 'posts#author_search', as: :asearch
 get '/dash' => 'dashboard#new', as: :dash
+scope '/account' do
+  get '/' => 'account#profile', as: :account
+  post '/' => 'account#update'
+end
 end
