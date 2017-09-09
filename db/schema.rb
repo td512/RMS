@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170907012903) do
     t.string   "awaiting_moderation"
     t.string   "post_id"
     t.string   "deleted"
+    t.string   "content"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end

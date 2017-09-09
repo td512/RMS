@@ -37,17 +37,19 @@
               </ul>
             </footer>
           </article>
+          <% if Comment.find_by(:post_id => params[:id]).nil? %>
+          <% else %>
           <article class="post">
-            <% Comment.all.reverse_each do |c| %>
+            <% Comment.where(:post_id => params[:id]).pluck(:content, :owner, :created_at).reverse.map do |content, owner, created_at| %>
             <div class="talk-bubble tri-right btm-right">
               <div class="talktext">
-                <p><%= c.content %></p>
+                <p><%= content %></p>
               </div>
             </div>
-            <span class="comment-author"><%= User.find_by(c.owner).first_name %></span>
+            <span class="comment-author">From <%= User.find_by(id: owner).first_name %> at <%= created_at.strftime("%l:%M%P on %B %e, %Y") %></span>
             <br />
             <hr>
-            <% end %>
+            <% end %><% end %>
           </article>
 
       </div>
