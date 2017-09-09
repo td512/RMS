@@ -3,6 +3,20 @@ class PostsController < ApplicationController
   before_action :check_user, except: [:details, :new, :author_search, :categories, :share]
   before_action :check_admin, except: [:details, :new, :author_search, :categories, :share]
   before_action :check_activated, except: [:details, :new, :author_search, :categories, :share]
+  def comment
+    comment = Comment.new()
+    comment.owner = current_user.id
+    if params[:comment][:content].present?
+      comment.content = params[:comment][:content]
+    else
+      redirect_to session[:return_url]
+    end
+    comment.post_id = params[:id]
+    if comment.save
+      url = session[:return_url]+"#"+comment.id.to_s
+      redirect_to url
+    end
+  end
   def share
     post = Post.find_by(id: params[:id])
     post.post_shares = post.post_shares.to_i + 1
@@ -79,6 +93,8 @@ class PostsController < ApplicationController
       post = Post.find_by(id: params[:id])
       post.post_views = Post.find_by(id: params[:id]).post_views.to_i + 1
       post.save
+      session[:return_url] = request.url
+
     end
   end
 end

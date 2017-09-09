@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170907012903) do
     t.string   "post_category"
     t.string   "post_shares"
     t.string   "post_views"
+    t.string   "post_comments"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

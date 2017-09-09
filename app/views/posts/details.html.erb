@@ -32,14 +32,29 @@
                 <li><% if Post.find_by(id: params[:id]).post_category.present?
                   Post.find_by(id: params[:id]).post_category.split(',').each do |c| %><a href="<%= category_path(c.strip) %>"><%= c %></a> <% end %><% end %></li>
                 <li><a href="javascript:void(0)" class="icon fa-eye"><%= Post.find_by(id: params[:id]).post_views.to_i - 1  %></a></li>
-                <li><a href="#" class="icon fa-comment">{comments}</a></li>
+                <li><a href="javascript:void(0)" onclick="$('#comment-section').slideToggle();" class="icon fa-comment"><%= Post.find_by(id: params[:id]).post_comments.to_i  %></a></li>
                 <li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= request.url%>',}, function(response){if(response && ! response.error_message){$.get('<%=share_path(:id)%>');}});" class="icon fa-share"><%= Post.find_by(id: params[:id]).post_shares.to_i  %></a></li>
               </ul>
             </footer>
           </article>
           <% if Comment.find_by(:post_id => params[:id]).nil? %>
           <% else %>
-          <article class="post">
+
+          <article class="post" style="display: none" id="comment-section">
+            <% if current_user %>
+            <a href="javascript:void(0)" onclick="$('#write-comment').slideToggle();" class="button special small">Comment</a><br /><br />
+            <article class="post" style="display: none" id="write-comment">
+              <%= form_for(:comment, url: comment_path(params[:id])) do |f| %>
+              <%= f.text_area :content, :class => "editor" %>
+              <br />
+              <div class="field half">
+              <%= f.submit "Post", :class => "special" %>
+            </div>
+              <% end %>
+            </article>
+            <% else %>
+            <a href="<%= login_path %>" class="button special small">Comment</a><br /><br />
+            <% end %>
             <% Comment.where(:post_id => params[:id]).pluck(:content, :owner, :created_at).reverse.map do |content, owner, created_at| %>
             <div class="talk-bubble tri-right btm-right">
               <div class="talktext">
@@ -54,5 +69,7 @@
 
       </div>
 <%= render 'partials/blog_footer' %>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=0cwvfj5tlb6zemm583zhp3isxiua8qaboo71uiha6eceyy9k"></script>
+<script src="https://cdn.2pro.international/panther/phantom/mce.js"></script>
 
   <% end %>

@@ -65,9 +65,12 @@ end
 # Posts
 scope '/posts' do
   get '/', to: redirect('/')
-  get '/:id' => 'posts#details'
-  get '/:id/share' => 'posts#share', as: :share
-  get '/:id/:slug' => 'posts#details', as: :post
+  scope '/:id' do
+    get '/' => 'posts#details'
+    get '/share' => 'posts#share', as: :share
+    post '/comment' => 'posts#comment', as: :comment
+    get '/:slug' => 'posts#details', as: :post
+  end
 end
 get '/category/:id' => 'posts#categories', as: :category
 get '/search' => 'posts#search', as: :search

@@ -8,10 +8,14 @@ class SessionsController < ApplicationController
   @user = User.find_by_email(params[:session][:email])
   if @user && @user.authenticate(params[:session][:password])
     if @user.enabled == "0"
-      redirect_to logout_path
+        redirect_to logout_path
     else
     session[:user_id] = @user.id
-    redirect_to dash_path
+    if ! session[:return_url]
+      redirect_to dash_path
+    else
+      redirect_to session[:return_url]
+    end
     end
   else
     redirect_to '/login/error'

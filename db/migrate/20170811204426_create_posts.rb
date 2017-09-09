@@ -9,6 +9,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
       t.string :post_category
       t.string :post_shares
       t.string :post_views
+      t.string :post_comments
       t.timestamps
     end
   end
