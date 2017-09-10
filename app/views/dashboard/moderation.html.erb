@@ -1,0 +1,39 @@
+<%= content_for :dash, "1" %>
+<%= content_for :title, "Manage Your Posts" %>
+<!-- Wrapper -->
+  <div id="wrapper">
+    <%= render 'partials/dash_nav' %>
+
+    <!-- Main -->
+   <div id="main">
+     <div class="inner">
+       <header>
+         <h1>Comment Moderation Queue</h1>
+       </header>
+       <br />
+       <section>
+         <div class="table-wrapper">
+           <table class="alt">
+             <thead>
+               <tr>
+                 <th>Comment</th>
+                 <th>Date Submitted</th>
+                 <th>Submitted By</th>
+                 <th>Reputation</th>
+                 <th>Actions</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% Comment.where(:awaiting_moderation => "1", :deleted => "0").pluck(:content, :owner, :created_at, :id, :post_id).reverse.map do |content, owner, created_at, id, post_id| %>
+               <tr>
+                 <th><%= content %></th>
+                 <th><%= User.find_by(:id => owner).first_name %> <%= User.find_by(:id => owner).last_name %> (<%= User.find_by(:id => owner).email %>)</th>
+                 <th><%= created_at.strftime("%B %e, %Y") %></th>
+                 <th>{REP}</th>
+                 <th><%= link_to "View", post_path(post_id, Post.find_by(id: post_id).slug)+"#"+id.to_s %> / <%= link_to "Delete Comment", delcomment_path(post_id, id) %> / <%= link_to "Approve", approvecommment_path(id) %></th>
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
+         </div>
+         <%= render "partials/dash_scripts" %>

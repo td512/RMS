@@ -8,6 +8,16 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
+  def new
+    session[:return_url] = nil
+  end
+  def approvecommment
+    comment = Comment.find_by(id: params[:cid])
+    comment.awaiting_moderation = "0"
+    if comment.save
+      redirect_to moderationq_path
+    end
+  end
   def comment
     comment = Comment.new()
     comment.owner = current_user.id

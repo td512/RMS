@@ -70,7 +70,7 @@ scope '/posts' do
     get '/' => 'posts#details'
     get '/share' => 'posts#share', as: :share
     post '/comment' => 'posts#comment', as: :comment
-    get '/comment/:id/delete' => 'dashboard#delcomment', as: :delcomment
+    get '/comment/:cid/delete' => 'dashboard#delcomment', as: :delcomment
     get '/:slug' => 'posts#details', as: :post
   end
 end
@@ -80,6 +80,10 @@ scope '/users' do
   get '/make/user/:id' => 'account#mkusr', as: :mkusr
   get '/deactivate/:id' => 'account#deactivate', as: :deactivate
   get '/impersonate/:id' => 'account#impersonate', as: :impersonate
+end
+scope '/comments' do
+  get '/moderation' => 'dashboard#moderation', as: :moderationq
+  get '/approve/:id' => 'posts#approvecommment', as: :approvecommment
 end
 get '/category/:id' => 'posts#categories', as: :category
 get '/category', to: redirect('/')
