@@ -1,0 +1,42 @@
+<%= content_for :dash, "1" %>
+<%= content_for :title, "Manage Your Posts" %>
+<!-- Wrapper -->
+  <div id="wrapper">
+    <%= render 'partials/dash_nav' %>
+
+    <!-- Main -->
+   <div id="main">
+     <div class="inner">
+       <header>
+         <h1>Manage Your Posts</h1>
+         <a href="<%= write_path %>"><%= submit_tag "Write", :class => "button special small" %></a>
+       </header>
+       <br />
+       <section>
+         <div class="table-wrapper">
+           <table class="alt">
+             <thead>
+               <tr>
+                 <th>First Name</th>
+                 <th>Last Name</th>
+                 <th>Email</th>
+                 <th>Joined</th>
+                 <th>Reputation</th>
+                 <th>Actions</th>
+               </tr>
+             </thead>
+             <tbody>
+               <% User.all.reverse_each do |u| %>
+               <tr>
+                 <th><%= u.first_name %></th>
+                 <th><%= u.last_name %></th>
+                 <th><%= u.email %></th>
+                 <th><%= u.created_at.strftime("%B %e, %Y") %></th>
+                 <th>{REP}</th>
+                 <th><%= link_to "View", "" %> / <% if u.level == "0" %><%= link_to "Make Admin", mkadmin_path(u.id) %><% else %><%= link_to "Make User", mkusr_path(u.id) %><% end %> / <%= link_to "Deactivate", deactivate_path(u.id) %> / <%= link_to "Impersonate", impersonate_path(u.id) %> / <%= link_to "Remove", usrdel_path(u.id) %> / <%= link_to "Stalk", "https://google.com/search?q=#{u.first_name+'+'+u.last_name}", :target => '_new' %></th>
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
+         </div>
+         <%= render "partials/dash_scripts" %>
