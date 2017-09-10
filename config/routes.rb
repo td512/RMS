@@ -78,7 +78,6 @@ scope '/users' do
   get '/manage' => 'dashboard#usrmgmt', as: :usrmgmt
   get '/make/admin/:id' => 'account#mkadmin', as: :mkadmin
   get '/make/user/:id' => 'account#mkusr', as: :mkusr
-  get '/delete/:id' => 'account#delete', as: :usrdel
   get '/deactivate/:id' => 'account#deactivate', as: :deactivate
   get '/impersonate/:id' => 'account#impersonate', as: :impersonate
 end

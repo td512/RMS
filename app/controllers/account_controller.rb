@@ -2,12 +2,7 @@ class AccountController < ApplicationController
   before_action :require_user
   before_action :check_user
   before_action :check_activated
-  before_action :check_admin, only: [:delete, :mkadmin, :mkusr, :deactivate, :impersonate, :rmusr]
-  def delete
-    u = User.find_by(id: params[:id])
-    u.delete
-    redirect_to usrmgmt_path
-  end
+  before_action :check_admin, only: [:mkadmin, :mkusr, :deactivate, :impersonate]
   def mkadmin
     u = User.find_by(id: params[:id])
     u.level = "1"
