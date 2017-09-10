@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
-  before_action :require_user, except: [:details, :new, :author_search, :categories, :share]
-  before_action :check_user, except: [:details, :new, :author_search, :categories, :share]
-  before_action :check_admin, except: [:details, :new, :author_search, :categories, :share, :comment]
-  before_action :check_activated, except: [:details, :new, :author_search, :categories, :share]
+  before_action :require_user, except: [:details, :new, :author_search, :categories, :share, :search]
+  before_action :check_user, except: [:details, :new, :author_search, :categories, :share, :search]
+  before_action :check_admin, except: [:details, :new, :author_search, :categories, :share, :comment, :search]
+  before_action :check_activated, except: [:details, :new, :author_search, :categories, :share, :search]
+  def search
+    if params[:q].nil?
+      redirect_to root_path
+    end
+  end
   def comment
     comment = Comment.new()
     comment.owner = current_user.id
