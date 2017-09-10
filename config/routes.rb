@@ -70,6 +70,7 @@ scope '/posts' do
     get '/' => 'posts#details'
     get '/share' => 'posts#share', as: :share
     post '/comment' => 'posts#comment', as: :comment
+    get '/comment/:id/delete' => 'dashboard#delcomment', as: :delcomment
     get '/:slug' => 'posts#details', as: :post
   end
 end

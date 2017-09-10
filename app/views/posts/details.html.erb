@@ -61,7 +61,7 @@
                 <p><%= ActionController::Base.helpers.sanitize(content) %></p>
               </div>
             </div>
-            <span class="comment-author">From <%= User.find_by(id: owner).first_name %> at <%= created_at.strftime("%l:%M%P on %B %e, %Y") %></span>
+            <span class="comment-author"><% if current_user.id == owner || current_user.level == "1" %><%= link_to "Delete? |", delcomment_path(id) %><% end%> From <%= User.find_by(id: owner).first_name %> at <%= created_at.strftime("%l:%M%P on %B %e, %Y") %></span>
             <br />
             <hr>
             <% end %><% end %>

@@ -33,7 +33,7 @@
                 <li><% if Post.order('id DESC').limit(1).pluck(:post_category).first.present?
                   Post.order('id DESC').limit(1).pluck(:post_category).first.split(',').each do |c| %><a href="<%= category_path(c.strip) %>"><%= c %></a> <% end %><% end %></li>
                   <li><a href="javascript:void(0)" class="icon fa-eye"><%= Post.order('id DESC').limit(1).pluck(:post_views).first.to_i - 1  %></a></li>
-                  <li><a href="#" class="icon fa-comment">{comments}</a></li>
+                  <li><a href="javascript:void(0)" class="icon fa-comment"><%= Post.order('id DESC').limit(1).pluck(:post_comments).first.to_i %></a></li>
                   <li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= post_url(Post.order('id DESC').limit(1).pluck(:id).first, Post.order('id DESC').limit(1).pluck(:slug).first) %>',}, function(response){if(response && ! response.error_message){$.get('<%=share_path(Post.order('id DESC').limit(1).pluck(:id))%>');}});" class="icon fa-share"><%= Post.order('id DESC').limit(1).pluck(:post_shares).first.to_i  %></a></li>
               </ul>
             </footer>
@@ -60,7 +60,7 @@
                   <li><% if post.post_category.present?
                     post.post_category.split(',').each do |c| %><a href="<%= category_path(c.strip) %>"><%= c %></a> <% end %><% end %></li>
                     <li><a href="javascript:void(0)" class="icon fa-eye"><%= post.post_views.to_i - 1  %></a></li>
-                    <li><a href="#" class="icon fa-comment">{comments}</a></li>
+                    <li><a href="javascript:void(0)" class="icon fa-comment"><%= post.post_comments.to_i %></a></li>
                     <li><a href="javascript:void(0)" target="popup" onclick="FB.ui({method: 'share',href: '<%= post_url(post.id, post.slug) %>',}, function(response){if(response && ! response.error_message){$.get('<%=share_path(post.id)%>');}});" class="icon fa-share"><%= post.post_shares.to_i  %></a></li>
                 </ul>
               </footer>

@@ -3,6 +3,15 @@ before_action :require_user
 before_action :check_user
 before_action :check_admin
 before_action :check_activated
+def delcomment
+  c = Comment.find_by(id: params[:id])
+  if current_user.id == c.owner || current_user.level == "1"
+    c.delete
+    redirect_to session[:return_url]
+  else
+    redirect_to session[:return_url]+"#"+c.id
+  end
+end
 def dellink
   link = Link.find_by(id: params[:id])
   link.delete
