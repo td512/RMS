@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     session[:return_url] = nil
   end
   def approvecommment
-    comment = Comment.find_by(id: params[:cid])
+    comment = Comment.find_by(id: params[:id])
     comment.awaiting_moderation = "0"
     if comment.save
       redirect_to moderationq_path
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     comment = Comment.new()
     comment.owner = current_user.id
     comment.deleted = "0"
-    comment.awaiting_moderation = "0"
+    comment.awaiting_moderation = "1"
     if params[:comment][:content].present?
       comment.content = params[:comment][:content]
     else
