@@ -6,8 +6,10 @@ before_action :check_activated
 def delcomment
   c = Comment.find_by(id: params[:id])
   if current_user.id == c.owner || current_user.level == "1"
-    c.delete
-    redirect_to session[:return_url]
+    c.deleted = "1"
+    if c.save
+      redirect_to session[:return_url]+"#"+c.id.to_s
+    end
   else
     redirect_to session[:return_url]+"#"+c.id
   end

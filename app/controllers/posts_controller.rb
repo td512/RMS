@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   def comment
     comment = Comment.new()
     comment.owner = current_user.id
+    comment.deleted = "0"
+    comment.awaiting_moderation = "0"
     if params[:comment][:content].present?
       comment.content = params[:comment][:content]
     else
