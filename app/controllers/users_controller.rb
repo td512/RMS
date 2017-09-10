@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   def emlerr
     @user = User.new
   end
+  def usrerr
+    @user = User.new
+  end
 def create
   @user = User.new(user_params)
   if User.exists?(:email => @user.email)
@@ -23,21 +26,26 @@ def create
           session[:user_id] = @user.id
           redirect_to dash_path
         else
-          redirect_to '/signup/error/email'
+          redirect_to emlerr_path
         end
       else
-        act_code = SecureRandom.hex(6)
-        token = SecureRandom.hex(48)
-        @user.activation_code = act_code
-        @user.activated = '0'
-        @user.level = '0'
-        @user.enabled = '1'
-        if @user.save
-          PostmarkMailer.verify(@user).deliver_now
-          session[:user_id] = @user.id
-          redirect_to dash_path
+        username_filter = LanguageFilter::Filter.new(matchlist: :profanity, creative_letters: true)
+        if username_filter.match?(@user.first_name+" "+@user.last_name)
+          redirect_to usrerr_path
         else
-          redirect_to '/signup/error/email'
+          act_code = SecureRandom.hex(6)
+          token = SecureRandom.hex(48)
+          @user.activation_code = act_code
+          @user.activated = '0'
+          @user.level = '0'
+          @user.enabled = '1'
+          if @user.save
+            PostmarkMailer.verify(@user).deliver_now
+            session[:user_id] = @user.id
+            redirect_to dash_path
+          else
+            redirect_to emlerr_path
+          end
         end
       end
   end

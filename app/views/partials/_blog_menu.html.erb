@@ -12,19 +12,20 @@
       <section>
         <ul class="links">
           <% if current_user && current_user.level == "0" %>
+          <% Menu.all.each do |m| %>
           <li>
             <a href="<%= m.url %>">
               <h3>Your Account</h3>
               <p>Need to update your account?</p>
             </a>
-          </li><% end %>
+          </li><% end %><% else %>
           <% Menu.all.each do |m| %>
           <li>
             <a href="<%= m.url %>">
               <h3><%= m.title %></h3>
               <p><%= m.subtitle %></p>
             </a>
-          </li><% end %>
+          </li><% end %><% end %>
         </ul>
       </section>
 

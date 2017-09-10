@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_user, except: [:details, :new, :author_search, :categories, :share]
   before_action :check_user, except: [:details, :new, :author_search, :categories, :share]
-  before_action :check_admin, except: [:details, :new, :author_search, :categories, :share]
+  before_action :check_admin, except: [:details, :new, :author_search, :categories, :share, :comment]
   before_action :check_activated, except: [:details, :new, :author_search, :categories, :share]
   def comment
     comment = Comment.new()
@@ -12,6 +12,9 @@ class PostsController < ApplicationController
       redirect_to session[:return_url]
     end
     comment.post_id = params[:id]
+    post = Post.find_by(id: params[:id])
+    post.post_comments = post.post_comments.to_i + 1
+    post.save
     if comment.save
       url = session[:return_url]+"#"+comment.id.to_s
       redirect_to url

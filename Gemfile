@@ -54,4 +54,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'gaffe'
 gem 'postmark-rails'
 gem 'email_validator'
+gem 'language_filter'
 

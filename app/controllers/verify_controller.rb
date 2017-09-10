@@ -10,7 +10,11 @@ class VerifyController < ApplicationController
       @user.activated = '1'
       @user.activation_code = nil
       if @user.save
+        if ! session[:return_url]
           redirect_to dash_path
+        else
+          redirect_to session[:return_url]
+        end
         end
       else
         redirect_to verify_error_path

@@ -25,7 +25,8 @@ end
 # Signup
 scope '/signup' do
   get '/'  => 'users#new', as: :signup
-  get '/error/email'  => 'users#emlerr'
+  get '/error/email'  => 'users#emlerr', as: :emlerr
+  get '/error/user'  => 'users#usrerr', as: :usrerr
   post '/'  => 'users#create'
 end
 # Verify
