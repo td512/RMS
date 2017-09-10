@@ -82,6 +82,8 @@ scope '/users' do
   get '/impersonate/:id' => 'account#impersonate', as: :impersonate
 end
 get '/category/:id' => 'posts#categories', as: :category
+get '/category', to: redirect('/')
+get '/author-posts', to: redirect('/')
 get '/search' => 'posts#search', as: :search
 get '/author-posts/:q' => 'posts#author_search', as: :asearch
 get '/dash' => 'dashboard#new', as: :dash
