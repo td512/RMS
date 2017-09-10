@@ -26,7 +26,7 @@
              <tbody>
                <% Comment.where(:awaiting_moderation => "1", :deleted => "0").pluck(:content, :owner, :created_at, :id, :post_id).reverse.map do |content, owner, created_at, id, post_id| %>
                <tr>
-                 <th><%= content %></th>
+                 <th><%= ActionView::Base.full_sanitizer.sanitize(content) %></th>
                  <th><%= User.find_by(:id => owner).first_name %> <%= User.find_by(:id => owner).last_name %> (<%= User.find_by(:id => owner).email %>)</th>
                  <th><%= created_at.strftime("%B %e, %Y") %></th>
                  <th>{REP}</th>
