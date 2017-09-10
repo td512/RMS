@@ -7,6 +7,9 @@ def delcomment
   c = Comment.find_by(id: params[:id])
   if current_user.id == c.owner || current_user.level == "1"
     c.deleted = "1"
+    post = Post.find_by(id: c.post_id)
+    post.post_comments = post.post_comments.to_i - 1
+    post.save
     if c.save
       redirect_to session[:return_url]+"#"+c.id.to_s
     end

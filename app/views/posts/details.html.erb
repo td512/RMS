@@ -41,6 +41,7 @@
           <article class="post" style="display: none" id="comment-section">
             <% if current_user %>
             <a href="javascript:void(0)" onclick="$('#write-comment').slideToggle();" class="button special small">Comment</a><br /><br />
+            <i>Warning: comments may be disturbing, proceed at your own risk</i><br /><br />
             <article class="post" style="display: none" id="write-comment">
               <%= form_for(:comment, url: comment_path(params[:id])) do |f| %>
               <%= f.text_area :content, :class => "editor" %>
@@ -52,6 +53,7 @@
             </article>
             <% else %>
             <a href="<%= login_path %>" class="button special small">Comment</a><br /><br />
+            <i>Warning: comments may be disturbing, proceed at your own risk</i><br /><br />
             <% end %>
             <% Comment.where(:post_id => params[:id]).pluck(:content, :owner, :created_at, :id, :deleted, :awaiting_moderation).reverse.map do |content, owner, created_at, id, deleted, awaiting_moderation| %>
             <div class="talk-bubble tri-right btm-right" id="<%= id %>">
