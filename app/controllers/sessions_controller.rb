@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
     end
     end
   else
-    redirect_to '/login/error'
+    redirect_to login_error_path
   end
 end
 def destroy
   session[:user_id] = nil
-  redirect_to '/login/session'
+  redirect_to login_session_path
 end
 def error
   if current_user

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 def create
   @user = User.new(user_params)
   if User.exists?(:email => @user.email)
-    redirect_to '/signup/error/email'
+    redirect_to emlerr_path
   else
     if EmailValidator.valid?(@user.email)
       if User.first.nil?

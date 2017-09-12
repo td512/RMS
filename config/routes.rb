@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   # Login
 scope '/login' do
   get '/'  => 'sessions#new', as: :login
-  get '/error'  => 'sessions#error'
-  get '/error/passwd'  => 'sessions#newpass'
-  get '/session'  => 'sessions#loggedout'
+  get '/error'  => 'sessions#error', as: :login_error
+  get '/error/passwd'  => 'sessions#newpass', as: :login_passwd
+  get '/session'  => 'sessions#loggedout', as: :login_session
   post '/'  => 'sessions#create'
 end
 # Logout
