@@ -44,7 +44,7 @@
             <i>Warning: comments may be disturbing, proceed at your own risk</i><br /><br />
             <article class="post" style="display: none" id="write-comment">
               <%= form_for(:comment, url: comment_path(params[:id])) do |f| %>
-              <%= f.text_area :content, :class => "editor" %>
+              <%= f.text_area :content, :class => "editor", :placeholder => "Write your comment here! GitHub flavored makdown is supported" %>
               <br />
               <div class="field half">
               <%= f.submit "Post", :class => "special" %>
