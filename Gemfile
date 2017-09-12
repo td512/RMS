@@ -55,4 +55,5 @@ gem 'gaffe'
 gem 'postmark-rails'
 gem 'email_validator'
 gem 'language_filter'
-
+gem 'kramdown'
+gem 'coderay'

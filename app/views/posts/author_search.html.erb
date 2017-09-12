@@ -25,7 +25,7 @@
                   <a href="<%= asearch_path(post.owner) %>" class="author"><span class="name"><%= User.find_by(id: Post.limit(1).pluck(:owner).first).first_name %></span><img src="<%= gravatar_url(User.find_by(id: Post.limit(1).pluck(:owner).first).email, 200) %>" alt="" /></a>
                 </div>
               </header>
-              <p><%= raw post.post_body.truncate_words(25) %></p>
+              <p><%= raw markdown(post.post_body.truncate_words(25)) %></p>
               <footer>
                 <ul class="actions">
                   <li><a href="<%= post_path(post.id, post.slug) %>" class="button big">Continue Reading</a></li>

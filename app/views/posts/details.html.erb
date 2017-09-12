@@ -26,7 +26,7 @@
                 <a href="<%= asearch_path(Post.find_by(id: params[:id]).owner) %>" class="author"><span class="name"><%= User.find_by(id: Post.find_by(id: params[:id]).owner).first_name %></span><img src="<%= gravatar_url(User.find_by(id: Post.find_by(id: params[:id]).owner).email, 200) %>" alt="" /></a>
               </div>
             </header>
-            <p><%= raw Post.find_by(id: params[:id]).post_body %></p>
+            <%= raw markdown(Post.find_by(id: params[:id]).post_body) %>
             <footer>
               <ul class="stats">
                 <li><% if Post.find_by(id: params[:id]).post_category.present?
