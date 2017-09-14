@@ -2,11 +2,6 @@
 <% content_for :font, "https://fonts.googleapis.com/css?family=Montserrat:200" %>
 <% content_for :stylesheet, "https://cdn.2pro.international/panther/stylesheets/login.css" %>
 <% content_for :login, "1" %>
-<% if current_user %>
-<script type="text/javascript">
-	window.location.href="/dash"
-</script>
-<% else %>
 
 <a href="<%= root_path %>"><%= image_tag "logo-text-white.png", :height => '55', :class => 'logo' %></a> <!-- 180^2 for signup -->
 
@@ -18,7 +13,7 @@ Sign Up
 <%= f.text_field :last_name, :placeholder => "Last name" %>
 <%= f.email_field :email, :placeholder => "Email" %>
 <%= f.password_field :password, :placeholder => "Password (min 8 characters)", :pattern => ".{8,}" %>
-   <%= f.submit "Sign Up" %>
-   <p><a href="<%= login_path %>">Log in?</a></p>
+<% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags callback: 'submitInvisibleRecaptchaForm', text: "Sign Up", :theme => 'dark' %><% end %>
+<p><a href="<%= login_path %>">Log in?</a></p>
 	 <% end %>
-	 <% end %>
+<%= render 'partials/login_recaptcha' %>

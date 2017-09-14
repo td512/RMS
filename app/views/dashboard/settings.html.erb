@@ -63,6 +63,20 @@
                     <% end %>
 									</div>
                   <div class="field half">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:recaptcha_public).first.nil?  %>
+                    <%= f.text_field :recaptcha_public, :placeholder => "reCAPTCHA Public Key" %>
+                    <% else %>
+										<%= f.text_field :recaptcha_public, :placeholder => Setting.limit(1).pluck(:recaptcha_public).first %>
+                    <% end %>
+									</div>
+                  <div class="field half first">
+                    <% if Setting.first.nil? || Setting.limit(1).pluck(:recaptcha_private).first.nil?  %>
+                    <%= f.text_field :recaptcha_private, :placeholder => "reCAPTCHA Private Key" %>
+                    <% else %>
+										<%= f.text_field :recaptcha_private, :placeholder => Setting.limit(1).pluck(:recaptcha_private).first %>
+                    <% end %>
+									</div>
+                  <div class="field half">
                     <% if Setting.first.nil? || Setting.limit(1).pluck(:blog_logo).first.nil?  %>
                     <%= f.text_field :blog_logo, :placeholder => "New Logo Image" %>
                     <% else %>

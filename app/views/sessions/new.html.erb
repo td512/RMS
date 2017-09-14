@@ -13,8 +13,8 @@ Log In
 </legend>
 <%= f.email_field :email, :placeholder => "Email" %>
 <%= f.password_field :password, :placeholder => "Password" %>
-   <%= f.submit "Log in" %>
-   <p><a href="<%= reset_path %>">Forgot password?</a></p>
+<% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags callback: 'submitInvisibleRecaptchaForm', text: "Log In", :theme => 'dark' %><% end %>
+<p><a href="<%= reset_path %>">Forgot password?</a></p>
 <% end %>
 <div class='footer'>
 <p>
@@ -22,3 +22,4 @@ Don't have an account?
 <a href="<%= signup_path %>">Sign Up</a>
 </p>
 </div>
+<%= render 'partials/login_recaptcha' %>

@@ -1,0 +1,7 @@
+<% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %>
+<script>
+var submitInvisibleRecaptchaForm = function () {
+  $("#write-comment").submit();
+};
+</script>
+<% end %>

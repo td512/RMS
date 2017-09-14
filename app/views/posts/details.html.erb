@@ -47,6 +47,7 @@
               <%= f.text_area :content, :class => "editor", :placeholder => "Write your comment here! GitHub flavored makdown is supported" %>
               <br />
               <div class="field half">
+                <% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags callback: 'submitInvisibleRecaptchaForm', text: "Post", :theme => 'dark' %><% end %>
               <%= f.submit "Post", :class => "special" %>
             </div>
               <% end %>
@@ -69,6 +70,7 @@
 
       </div>
 <%= render 'partials/blog_footer' %>
+<%= render 'partials/comments_recaptcha' %>
 <script>
 if(window.location.hash) {
   console.log(window.location.hash)
