@@ -14,3 +14,4 @@ Reset Password
 <%= f.password_field :password, :placeholder => "Password" %>
    <% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Reset my password", :theme => 'dark' %><% else %><%= f.submit "Reset my password" %><% end %>
 <% end %>
+<%= render 'partials/login_recaptcha' %>
