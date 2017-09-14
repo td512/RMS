@@ -19,6 +19,13 @@
               <p>Need to update your account?</p>
             </a>
           </li><% end %><% else %>
+          <% if current_user && current_user.level == "0" %>
+          <li>
+            <a href="<%= account_path %>">
+              <h3>Your Account</h3>
+              <p>Manage your account here</p>
+            </a>
+          </li><% end %>
           <% Menu.all.each do |m| %>
           <li>
             <a href="<%= m.url %>">
