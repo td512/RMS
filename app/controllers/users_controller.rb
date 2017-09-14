@@ -13,7 +13,7 @@ def create
   if User.exists?(:email => @user.email)
     redirect_to emlerr_path
   else
-    if verify_recaptcha(model: @user)
+    if verify_recaptcha(model: @user, secret_key: Setting.limit(1).pluck(:recaptcha_private).first)
     if EmailValidator.valid?(@user.email)
       if User.first.nil?
         act_code = SecureRandom.hex(6)

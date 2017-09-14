@@ -25,14 +25,12 @@ class PostsController < ApplicationController
     comment.awaiting_moderation = "1"
     if params[:comment][:content].present?
       comment.content = params[:comment][:content]
-    else
-      redirect_to session[:return_url]
     end
     comment.post_id = params[:id]
     post = Post.find_by(id: params[:id])
     post.post_comments = post.post_comments.to_i + 1
     post.save
-    if comment.save
+    if comment.save && verify_recaptcha(model: comment, secret_key: Setting.limit(1).pluck(:recaptcha_private).first)
       url = session[:return_url]+"#"+comment.id.to_s
       redirect_to url
     end
