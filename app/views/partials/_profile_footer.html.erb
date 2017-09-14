@@ -1,0 +1,14 @@
+<footer>
+  <ul class="icons">
+    <% if ! User.find_by(id: params[:id]).twitter.nil? %><li><a href="<%= User.find_by(id: params[:id]).facebook %>" class="fa-facebook">Facebook</a></li><% end %>
+    <% if ! User.find_by(id: params[:id]).twitter.nil? %><li><a href="<%= "https://twitter.com/"+User.find_by(id: params[:id]).twitter %>" class="fa-twitter">Twitter</a></li><% end %>
+  </ul>
+</footer>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+<ul class="copyright">
+  <li>&copy; <%= Date.today.year %> <%= Setting.limit(1).pluck(:blog_name).first %></li>
+</ul>
+</footer>

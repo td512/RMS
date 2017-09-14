@@ -1,0 +1,16 @@
+<% content_for :profile, 1 %>
+<% content_for :title, User.find_by(id: params[:id]).first_name+" "+User.find_by(id: params[:id]).last_name %>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<span class="avatar"><img src="<%= gravatar_url(User.find_by(id: params[:id]).email, 150) %>" alt="" /></span>
+							<h1><%= User.find_by(id: params[:id]).first_name %> <%= User.find_by(id: params[:id]).last_name %></h1>
+							<p><%= User.find_by(id: params[:id]).oneline %></p>
+						</header>
+						<%= render 'partials/profile_footer' %>
+						<%= render 'partials/profile_scripts' %>
+
+			</div>

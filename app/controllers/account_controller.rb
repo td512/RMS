@@ -39,9 +39,18 @@ class AccountController < ApplicationController
       if params[:profile][:email].present?
         current_user.email = params[:profile][:email]
       end
-        if params[:profile][:password].present?
-          current_user.password = params[:profile][:password]
-        end
+      if params[:profile][:password].present?
+        current_user.password = params[:profile][:password]
+      end
+      if params[:profile][:facebook].present?
+        current_user.facebook = params[:profile][:facebook]
+      end
+      if params[:profile][:twitter].present?
+        current_user.twitter = params[:profile][:twitter]
+      end
+      if params[:profile][:oneline].present?
+        current_user.oneline = params[:profile][:oneline]
+      end
         if current_user.save
           redirect_to account_path
       end

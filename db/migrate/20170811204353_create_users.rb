@@ -10,6 +10,9 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :activated
       t.string :level
       t.string :enabled
+      t.string :facebook
+      t.string :twitter
+      t.string :oneline
       t.timestamps
     end
   end

@@ -30,7 +30,7 @@
                  <th><%= u.last_name %></th>
                  <th><%= u.email %></th>
                  <th><%= u.created_at.strftime("%B %e, %Y") %></th>
-                 <th><%= link_to "View", "" %> / <% if u.level == "0" %><%= link_to "Make Admin", mkadmin_path(u.id) %><% else %><%= link_to "Make User", mkusr_path(u.id) %><% end %> / <%= link_to "Deactivate", deactivate_path(u.id) %> / <%= link_to "Impersonate", impersonate_path(u.id) %> / <%= link_to "Stalk", "https://google.com/search?q=#{u.first_name+'+'+u.last_name}", :target => '_new' %></th>
+                 <th><%= link_to "View", profile(u.id) %> / <% if u.level == "0" %><%= link_to "Make Admin", mkadmin_path(u.id) %><% else %><%= link_to "Make User", mkusr_path(u.id) %><% end %> / <%= link_to "Deactivate", deactivate_path(u.id) %> / <%= link_to "Impersonate", impersonate_path(u.id) %> / <%= link_to "Stalk", "https://google.com/search?q=#{u.first_name+'+'+u.last_name}", :target => '_new' %></th>
                </tr>
                <% end %>
              </tbody>

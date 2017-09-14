@@ -86,6 +86,7 @@ scope '/comments' do
   get '/approve/:id' => 'posts#approvecommment', as: :approvecommment
 end
 get '/category/:id' => 'posts#categories', as: :category
+get '/profile/:id' => 'profile#new', as: :profile
 get '/category', to: redirect('/')
 get '/author-posts', to: redirect('/')
 get '/search' => 'posts#search', as: :search

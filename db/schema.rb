@@ -89,6 +89,9 @@ ActiveRecord::Schema.define(version: 20170907012903) do
     t.string   "activated"
     t.string   "level"
     t.string   "enabled"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "oneline"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
