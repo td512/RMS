@@ -12,14 +12,6 @@
       <section>
         <ul class="links">
           <% if current_user && current_user.level == "0" %>
-          <% Menu.all.each do |m| %>
-          <li>
-            <a href="<%= m.url %>">
-              <h3><%= m.title %></h3>
-              <p><%= m.subtitle %></p>
-            </a>
-          </li><% end %><% else %>
-          <% if current_user && current_user.level == "0" %>
           <li>
             <a href="<%= account_path %>">
               <h3>Your Account</h3>
