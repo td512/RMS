@@ -11,7 +11,7 @@
     <!-- Links -->
       <section>
         <ul class="links">
-          <% if current_user && current_user.level == "0" %>
+          <% if current_user %>
           <li>
             <a href="<%= account_path %>">
               <h3>Your Account</h3>
