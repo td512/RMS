@@ -22,18 +22,30 @@ class PostsController < ApplicationController
     comment = Comment.new()
     comment.owner = current_user.id
     comment.deleted = "0"
-    comment.awaiting_moderation = "1"
+    comment.awaiting_moderation = "0"
     if params[:comment][:content].present?
       comment.content = params[:comment][:content]
     end
+    if ! comment.content.nil?
     comment.post_id = params[:id]
     post = Post.find_by(id: params[:id])
     post.post_comments = post.post_comments.to_i + 1
     post.save
+
+    if ! Setting.limit(1).pluck(:recaptcha_private).first.nil?
     if comment.save && verify_recaptcha(model: comment, secret_key: Setting.limit(1).pluck(:recaptcha_private).first)
       url = session[:return_url]+"#"+comment.id.to_s
       redirect_to url
     end
+  else
+    if comment.save
+      url = session[:return_url]+"#"+comment.id.to_s
+      redirect_to url
+    end
+  end
+else
+  redirect_to session[:return_url]
+end
   end
   def share
     post = Post.find_by(id: params[:id])
