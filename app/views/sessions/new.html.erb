@@ -13,7 +13,7 @@ Log In
 </legend>
 <%= f.email_field :email, :placeholder => "Email" %>
 <%= f.password_field :password, :placeholder => "Password" %>
-<% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Log In", :theme => 'dark' %><% end %>
+<% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Log In", :theme => 'dark' %><% else %><%= f.submit "Log In" %><% end %>
 <p><a href="<%= reset_path %>">Forgot password?</a></p>
 <% end %>
 <div class='footer'>

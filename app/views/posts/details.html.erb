@@ -47,7 +47,7 @@
               <%= f.text_area :content, :class => "editor", :placeholder => "Write your comment here! GitHub flavored makdown is supported" %>
               <br />
               <div class="field half">
-                <% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Post", :theme => 'dark' %><% end %>
+                <% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Post", :theme => 'dark' %><% else %><%= f.submit "Post" %><% end %>
               <%= f.submit "Post", :class => "special" %>
             </div>
               <% end %>

@@ -74,6 +74,12 @@ def apply
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]
               end
+              if params[:settings][:recaptcha_public].present?
+                settings.recaptcha_public = params[:settings][:recaptcha_public]
+              end
+              if params[:settings][:recaptcha_private].present?
+                settings.recaptcha_private = params[:settings][:recaptcha_private]
+              end
               if params[:settings][:blog_css_bg].present?
                 settings.blog_css_bg = params[:settings][:blog_css_bg]
               else
@@ -167,6 +173,12 @@ def apply
               end
               if params[:settings][:blog_logo].present?
                 settings.blog_logo = params[:settings][:blog_logo]
+              end
+              if params[:settings][:recaptcha_public].present?
+                settings.recaptcha_public = params[:settings][:recaptcha_public]
+              end
+              if params[:settings][:recaptcha_private].present?
+                settings.recaptcha_private = params[:settings][:recaptcha_private]
               end
               if params[:settings][:dash_css_bg].present?
                 settings.dash_css_bg = params[:settings][:dash_css_bg]

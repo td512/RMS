@@ -13,6 +13,7 @@ def create
   if User.exists?(:email => @user.email)
     redirect_to emlerr_path
   else
+    if verify_recaptcha(model: @user)
     if EmailValidator.valid?(@user.email)
       if User.first.nil?
         act_code = SecureRandom.hex(6)
@@ -52,6 +53,7 @@ def create
         end
       end
   end
+end
 end
 end
   private
