@@ -31,18 +31,10 @@ class PostsController < ApplicationController
     post = Post.find_by(id: params[:id])
     post.post_comments = post.post_comments.to_i + 1
     post.save
-
-    if ! Setting.limit(1).pluck(:recaptcha_private).first.nil?
-    if comment.save && verify_recaptcha(model: comment, secret_key: Setting.limit(1).pluck(:recaptcha_private).first)
-      url = session[:return_url]+"#"+comment.id.to_s
-      redirect_to url
-    end
-  else
     if comment.save
       url = session[:return_url]+"#"+comment.id.to_s
       redirect_to url
     end
-  end
 else
   redirect_to session[:return_url]
 end

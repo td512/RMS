@@ -47,7 +47,7 @@
               <%= f.text_area :content, :class => "editor", :placeholder => "Write your comment here! GitHub flavored makdown is supported" %>
               <br />
               <div class="field half">
-                <% if Setting.limit(1).pluck(:recaptcha_public).first && Setting.limit(1).pluck(:recaptcha_private).first %><%= invisible_recaptcha_tags site_key: Setting.limit(1).pluck(:recaptcha_public).first, callback: 'submitInvisibleRecaptchaForm', text: "Post", :theme => 'dark' %><% else %><%= f.submit "Post" %><% end %>
+                <%= f.submit "Post" %>
             </div>
               <% end %>
             </article>
@@ -61,7 +61,7 @@
                 <% if deleted == "0" && awaiting_moderation == "0" %><%= raw markdown(ActionController::Base.helpers.sanitize(content)) %><% elsif deleted == "1" %><p><i>This comment has been deleted</i></p><% elsif deleted == "2"%><p><i>This comment has been marked as spam</i></p><% elsif awaiting_moderation == "1"%><p><i>This comment is awaiting moderation</i></p><% end %>
               </div>
             </div>
-            <span class="comment-author"><% if current_user && current_user.id == owner || current_user && current_user.level == "1" %><% if deleted == "0" %><%= link_to "Delete?", delcomment_path(params[:id], id) %> |<% end%><% end%> From <%= User.find_by(id: owner).first_name %><% if User.find_by(id: owner).enabled == "0" %> (Banned)<%end%> at <%= created_at.strftime("%l:%M%P on %B %e, %Y") %></span>
+            <span class="comment-author"><% if current_user && current_user.id == owner || current_user && current_user.level == "1" %><% if deleted == "0" %><%= link_to "Delete?", delcomment_path(params[:id], id) %> |<% end%><% end%> From <a href="<%= profile_path(owner) %>"><%= User.find_by(id: owner).first_name %><% if User.find_by(id: owner).enabled == "0" %> (Banned)<%end%></a> at <%= created_at.strftime("%l:%M%P on %B %e, %Y") %></span>
             <br />
             <hr>
             <% end %>

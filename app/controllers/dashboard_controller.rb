@@ -4,7 +4,7 @@ before_action :check_user
 before_action :check_admin
 before_action :check_activated
 def delcomment
-  c = Comment.find_by(id: params[:id])
+  c = Comment.find_by(id: params[:cid])
   if current_user.id == c.owner || current_user.level == "1"
     c.deleted = "1"
     post = Post.find_by(id: c.post_id)
