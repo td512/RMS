@@ -2,7 +2,6 @@
 <% content_for :error, "1" %>
 <% content_for :title, "500" %>
 <div id="wrap">
-  <% if Setting.limit(1).pluck(:errors_override).first.nil? %>
       <h1>Uh Oh...</h1>
       <div class="content">
         <hr>
@@ -10,6 +9,3 @@
         <hr>
       </div>
     </div>
-<% else %>
-  <%= Setting.limit(1).pluck(:errors_override).first %>
-  <% end %>
