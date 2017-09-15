@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><% if Setting.first.nil? %>Panther<% else %> <%= Setting.limit(1).pluck(:blog_name).first %> <% end %> - <%= yield(:title) %></title>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://cdn.2pro.international/panther/favicon.ico?v=4" />
+    <% if content_for?(:stylesheet) %>
+      <%= stylesheet_link_tag yield(:stylesheet), :media => "all" %>
+    <% end %>
+    <% if content_for?(:error)  %>
+    <style>
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+    body,.content{background: <%= Setting.limit(1).pluck(:blog_css_bg).first %> !important;}*{color: <%= Setting.limit(1).pluck(:blog_css_tc).first %> !important; font-family: 'Ubuntu', sans-serif;
+}#wrap{background-color: <%= Setting.limit(1).pluck(:blog_css_post).first %> !important;}
+    </style>
+    <% end %>
+    <!-- Panther, Build 863. Render Time: <%= Time.now-@start_time %> seconds -->
+  <body>
+    <%= yield %>
+  </body>
+</html>
