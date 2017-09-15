@@ -26,6 +26,15 @@ class AccountController < ApplicationController
   end
   def impersonate
     u = User.find_by(id: params[:id])
+    session[:impersonate] = current_user.id
+    session[:user_id] = u.id
+    redirect_to root_path
+  end
+  def stop_impersonate
+    u = User.find_by(id: params[:id])
+    session[:impersonate] = nil
+    session[:user_id] = u.id
+    redirect_to root_path
   end
   def profile
   end

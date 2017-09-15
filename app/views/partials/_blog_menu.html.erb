@@ -12,6 +12,13 @@
       <section>
         <ul class="links">
           <% if current_user %>
+          <% if session[:impersonate] %>
+          <li>
+            <a href="<%= stopimpersonate_path(session[:impersonate]) %>">
+              <h3>Stop impersonation</h3>
+              <p>Stop impersonating that person you creep</p>
+            </a>
+          </li><% end %>
           <li>
             <a href="<%= account_path %>">
               <h3>Your Account</h3>

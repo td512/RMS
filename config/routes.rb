@@ -80,6 +80,7 @@ scope '/users' do
   get '/make/user/:id' => 'account#mkusr', as: :mkusr
   get '/deactivate/:id' => 'account#deactivate', as: :deactivate
   get '/impersonate/:id' => 'account#impersonate', as: :impersonate
+  get '/stop-impersonation/:id' => 'account#stop_impersonate', as: :stopimpersonate
 end
 scope '/comments' do
   get '/moderation' => 'dashboard#moderation', as: :moderationq
