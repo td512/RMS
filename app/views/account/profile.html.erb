@@ -27,21 +27,21 @@
 										<%= f.password_field :password, :placeholder => "New Password" %>
 									</div>
                   <div class="field half first">
-                    <% if current_user.facebook.empty? %>
+                    <% if current_user.facebook.nil? %>
 										<%= f.text_field :facebook, :placeholder => "Facebook URL" %>
                     <% else %>
                     <%= f.text_field :facebook, :placeholder => current_user.facebook %>
                     <% end %>
 									</div>
                   <div class="field half">
-                    <% if current_user.twitter.empty? %>
+                    <% if current_user.twitter.nil? %>
 										<%= f.text_field :twitter, :placeholder => "Twitter Handle" %>
                     <% else %>
                     <%= f.text_field :twitter, :placeholder => current_user.twitter %>
                     <% end %>
 									</div>
                   <div class="field">
-                    <% if current_user.facebook.empty? %>
+                    <% if current_user.oneline.nil? %>
 										<%= f.text_field :oneline, :placeholder => "A few words about you" %>
                     <% else %>
                     <%= f.text_field :oneline, :placeholder => current_user.oneline %>
