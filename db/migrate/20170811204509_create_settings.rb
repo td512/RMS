@@ -21,6 +21,7 @@ class CreateSettings < ActiveRecord::Migration[5.0]
       t.string :dash_css_highlight
       t.string :recaptcha_public
       t.string :recaptcha_private
+      t.string :errors_override
       t.timestamps
     end
   end

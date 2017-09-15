@@ -30,13 +30,6 @@ def create
           redirect_to emlerr_path
         end
       else
-        profanity_filter = LanguageFilter::Filter.new(matchlist: :profanity, creative_letters: true)
-        hate_filter = LanguageFilter::Filter.new(matchlist: :hate, creative_letters: true)
-        sex_filter = LanguageFilter::Filter.new(matchlist: :sex, creative_letters: true)
-        violence_filter = LanguageFilter::Filter.new(matchlist: :violence, creative_letters: true)
-        if profanity_filter.match?(@user.first_name+" "+@user.last_name) || hate_filter.match?(@user.first_name+" "+@user.last_name) || sex_filter.match?(@user.first_name+" "+@user.last_name) || violence_filter.match?(@user.first_name+" "+@user.last_name)
-          redirect_to usrerr_path
-        else
           act_code = SecureRandom.hex(6)
           token = SecureRandom.hex(48)
           @user.activation_code = act_code
@@ -50,7 +43,6 @@ def create
           else
             redirect_to emlerr_path
           end
-        end
       end
   end
 end
