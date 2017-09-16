@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration[5.0]
       t.string :post_id
       t.string :deleted
       t.string :content
+      
       t.timestamps
     end
   end
