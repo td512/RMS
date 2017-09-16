@@ -45,29 +45,9 @@ end
     post.save
   end
   def update
-    post = Post.find_by(id: params[:id])
-    if params[:write][:title].present?
-      post.post_title = params[:write][:title]
-    end
-    if params[:write][:subtitle].present?
-      post.post_subtitle = params[:write][:subtitle]
-    end
-    if params[:write][:content].present?
-      post.post_body = params[:write][:content]
-    end
-    if params[:write][:tags].present?
-      post.post_category = params[:write][:tags]
-    end
-    if params[:write][:title].present?
-      post.slug = params[:write][:title].parameterize
-    end
-    if post.save
       redirect_to manage_path
     end
-    end
   def delete
-    post = Post.find_by(id: params[:id])
-    post.delete
     redirect_to manage_path
   end
   def post

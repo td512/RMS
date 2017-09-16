@@ -27,7 +27,6 @@
           <li><a href="<%= manage_path %>">Post Management</a></li>
           <li><a href="<%= settings_path %>">Site Settings</a></li>
           <li><a href="<%= account_path %>">Your Account</a></li>
-          <li><a href="<%= logout_path %>">Logout</a></li>
           <% if session[:impersonate] %>
           <li><a href="<%= stopimpersonate_path(session[:impersonate]) %>">Stop Impersonation</a>
             <% end %>
