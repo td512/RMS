@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170907012903) do
     t.string   "dash_css_highlight"
     t.string   "recaptcha_public"
     t.string   "recaptcha_private"
+    t.string   "errors_override"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end
