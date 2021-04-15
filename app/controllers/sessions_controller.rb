@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
   def create
   @user = User.find_by_email(params[:session][:email])
-  if @user && @user.authenticate(params[:session][:password]) && verify_recaptcha(model: @user, secret_key: Setting.limit(1).pluck(:recaptcha_private).first)
+  if @user && @user.authenticate(params[:session][:password])
     if @user.enabled == "0"
         redirect_to logout_path
     else
